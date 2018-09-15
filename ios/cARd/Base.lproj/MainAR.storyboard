@@ -160,6 +160,12 @@
                                     <segue destination="sEh-aQ-tO6" kind="embed" id="7QS-FZ-51c"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhL-q5-O4F">
+                                <rect key="frame" x="67" y="265" width="240" height="137"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="height" multiplier="7:4" id="qki-5g-uAy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -167,10 +173,12 @@
                             <constraint firstAttribute="bottom" secondItem="Mab-ha-IhP" secondAttribute="bottom" id="7il-ju-qWG"/>
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="T02-Ee-y9X" secondAttribute="trailing" id="EoL-wP-e6i"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="top" secondItem="BZX-55-uEL" secondAttribute="top" id="EyQ-1f-skH"/>
+                            <constraint firstItem="uhL-q5-O4F" firstAttribute="centerY" secondItem="YGe-Hv-dBb" secondAttribute="centerY" id="JHM-B7-rIT"/>
                             <constraint firstItem="Mab-ha-IhP" firstAttribute="leading" secondItem="BZX-55-uEL" secondAttribute="leading" id="MKB-0a-TP8"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="Nuz-qt-Dma"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="PCS-b0-Msw"/>
                             <constraint firstAttribute="bottom" secondItem="T02-Ee-y9X" secondAttribute="bottom" id="Rui-lP-is5"/>
+                            <constraint firstItem="uhL-q5-O4F" firstAttribute="centerX" secondItem="YGe-Hv-dBb" secondAttribute="centerX" id="Wtw-RC-oRb"/>
                             <constraint firstAttribute="trailing" secondItem="Mab-ha-IhP" secondAttribute="trailing" id="Xdf-jo-2gK"/>
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="lZX-kX-eDH" secondAttribute="trailing" id="f4L-v5-Nyv"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="top" secondItem="YGe-Hv-dBb" secondAttribute="top" id="fjx-2Q-9Zw"/>
