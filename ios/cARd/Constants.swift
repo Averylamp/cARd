@@ -8,27 +8,18 @@
 
 import Foundation
 import UIKit
+import VideoToolbox
 
 class Constants{
+    
     static let selectionHapticFeedback = UISelectionFeedbackGenerator()
     static let notificationHapticFeedback = UINotificationFeedbackGenerator()
-    static let currentDay: Date = Date().addingTimeInterval(-60 * 60 * 24 * 3)
-    
-    static var diningHallMapping: [String: String] = [
-        "mccormick":"diningHallPreview0",
-        "simmons":"diningHallPreview1",
-        "baker":"diningHallPreview2",
-        "next":"diningHallPreview3",
-        "maseeh":"diningHallPreview5"
-    ]
-    
-    
     
     class func generateSelectionHapticFeedback(){
         selectionHapticFeedback.selectionChanged()
     }
     
-    class func generateNotificationHapticFeedback(feedback:UINotificationFeedbackGenerator.FeedbackType){
+    class func generateNotificationHapticFeedback(feedback: UINotificationFeedbackGenerator.FeedbackType){
         notificationHapticFeedback.notificationOccurred(feedback)
     }
     
@@ -74,6 +65,27 @@ extension UIViewController{
         DispatchQueue.main.asyncAfter(
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
+    
+}
+
+extension UIImage {
+    public convenience init?(pixelBuffer: CVPixelBuffer) {
+        var cgImage: CGImage?
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &cgImage)
+        
+        if let cgImage = cgImage {
+            self.init(cgImage: cgImage)
+        } else {
+            return nil
+        }
+    }
+    
+    func cropImage(toRect rect:CGRect) -> UIImage{
+        let imageRef:CGImage = self.cgImage!.cropping(to: rect)!
+        let cropped:UIImage = UIImage(cgImage:imageRef)
+        return cropped
+    }
+
     
 }
 
