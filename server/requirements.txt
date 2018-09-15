@@ -1,3 +1,4 @@
 requests
 opencv-python
 Flask
+google-cloud-vision

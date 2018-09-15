@@ -1,5 +1,5 @@
 from flask import Flask, request
-from vision import get_cropped_and_rectified_image
+from vision_util import get_cropped_and_rectified_image
 app = Flask(__name__)
 
 @app.route('/')
