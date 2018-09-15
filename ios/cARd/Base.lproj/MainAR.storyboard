@@ -109,7 +109,6 @@
                                 <state key="highlighted" image="restartPressed"/>
                                 <connections>
                                     <action selector="restartExperience:" destination="sEh-aQ-tO6" eventType="touchUpInside" id="L38-hN-FN9"/>
-                                    <action selector="restartExperience:" destination="cRK-xk-l85" eventType="touchUpInside" id="TZt-IJ-QEg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -190,7 +189,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="restart" width="16" height="16"/>
-        <image name="restartPressed" width="16" height="16"/>
+        <image name="restart" width="20" height="23"/>
+        <image name="restartPressed" width="20" height="23"/>
     </resources>
 </document>

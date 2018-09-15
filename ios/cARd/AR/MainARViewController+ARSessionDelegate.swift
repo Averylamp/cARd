@@ -84,6 +84,7 @@ extension MainARViewController: ARSessionDelegate {
         guard isRestartAvailable else { return }
         isRestartAvailable = false
         
+        print("Restarting")
         statusViewController.cancelAllScheduledMessages()
         
         resetTracking()

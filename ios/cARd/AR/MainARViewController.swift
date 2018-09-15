@@ -74,6 +74,14 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         let configuration = ARImageTrackingConfiguration()
         configuration.maximumNumberOfTrackedImages = 1
+        
+        
+        
+        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
+        self.arReferenceImages.update(with: testImage)
+        
+        
+        
         configuration.trackingImages = self.arReferenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
