@@ -65,16 +65,16 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     /// Prevents restarting the session while a restart is in progress.
     var isRestartAvailable = true
     
+    
+    var arReferenceImages: Set<ARReferenceImage> = Set<ARReferenceImage>()
+    
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-            fatalError("Missing expected asset catalog resources.")
-        }
-        
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
+        let configuration = ARImageTrackingConfiguration()
+        configuration.maximumNumberOfTrackedImages = 1
+        configuration.trackingImages = self.arReferenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
