@@ -12,19 +12,36 @@ class ContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let arvc = UIStoryboard(name: "MainAR", bundle: nil).instantiateViewController(withIdentifier: "MainARVC") as? MainARViewController {
+            self.addChildViewController(arvc)
+           self.view.addSubview(arvc.view)
+            arvc.didMove(toParentViewController: self)
+            arvc.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.view.addConstraints([
+                NSLayoutConstraint(item: arvc.view, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: arvc.view, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: arvc.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: arvc.view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+                ])
+        }
+        
+        if let historyListVC = UIStoryboard(name: "Extras", bundle: nil).instantiateViewController(withIdentifier: "HistoryListVC") as? HistoryListViewController{
+            self.addChildViewController(historyListVC)
+            self.view.addSubview(historyListVC.view)
+            historyListVC.didMove(toParentViewController: self)
+            historyListVC.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.view.addConstraints([
+                NSLayoutConstraint(item: historyListVC.view, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: historyListVC.view, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: historyListVC.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 3.0, constant: 0.0),
+                NSLayoutConstraint(item: historyListVC.view, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+                ])
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

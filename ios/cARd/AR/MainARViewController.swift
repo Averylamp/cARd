@@ -10,6 +10,12 @@ import UIKit
 import ARKit
 import SceneKit
 
+enum ScanState {
+    case Scanning
+    case Loading
+    case Displaying
+}
+
 class MainARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
