@@ -14,6 +14,9 @@
 		6E10F94B214D5D5600D44C9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E10F949214D5D5600D44C9F /* LaunchScreen.storyboard */; };
 		6E10F956214D5D5600D44C9F /* cARdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10F955214D5D5600D44C9F /* cARdTests.swift */; };
 		6E10F961214D5D5600D44C9F /* cARdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10F960214D5D5600D44C9F /* cARdUITests.swift */; };
+		9CEB390ACB597BADB8A12450 /* Pods_cARd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */; };
+		AC1601636DCDEC750EF6AF51 /* Pods_cARdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */; };
+		D7C3B46C8887109A12EEB66A /* Pods_cARdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D469D0CD5845254E5177CE /* Pods_cARdTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053F775B7C8FD7AA14E2D349 /* Pods-cARdTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B8619AB872A79B3E2A78D59 /* Pods-cARd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARd.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cARd/Pods-cARd.debug.xcconfig"; sourceTree = "<group>"; };
+		46D469D0CD5845254E5177CE /* Pods_cARdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cARdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		663892DAC078D518AD62C224 /* Pods-cARd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARd.release.xcconfig"; path = "Pods/Target Support Files/Pods-cARd/Pods-cARd.release.xcconfig"; sourceTree = "<group>"; };
 		6E10F93D214D5D5400D44C9F /* cARd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cARd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E10F940214D5D5500D44C9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E10F942214D5D5500D44C9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		6E10F95C214D5D5600D44C9F /* cARdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cARdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E10F960214D5D5600D44C9F /* cARdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cARdUITests.swift; sourceTree = "<group>"; };
 		6E10F962214D5D5600D44C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cARdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD16ECEBE625CF589F95443 /* Pods-cARdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A9E7FEA7863D5B2DE25C647F /* Pods-cARdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cARd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEB390ACB597BADB8A12450 /* Pods_cARd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C3B46C8887109A12EEB66A /* Pods_cARdTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1601636DCDEC750EF6AF51 /* Pods_cARdUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,8 @@
 				6E10F954214D5D5600D44C9F /* cARdTests */,
 				6E10F95F214D5D5600D44C9F /* cARdUITests */,
 				6E10F93E214D5D5400D44C9F /* Products */,
+				9DF7CB62B2999D74B0962AF3 /* Pods */,
+				DDBC80AB445A4107CF581B9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +142,29 @@
 			path = cARdUITests;
 			sourceTree = "<group>";
 		};
+		9DF7CB62B2999D74B0962AF3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B8619AB872A79B3E2A78D59 /* Pods-cARd.debug.xcconfig */,
+				663892DAC078D518AD62C224 /* Pods-cARd.release.xcconfig */,
+				A9E7FEA7863D5B2DE25C647F /* Pods-cARdTests.debug.xcconfig */,
+				053F775B7C8FD7AA14E2D349 /* Pods-cARdTests.release.xcconfig */,
+				8AD16ECEBE625CF589F95443 /* Pods-cARdUITests.debug.xcconfig */,
+				9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DDBC80AB445A4107CF581B9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */,
+				46D469D0CD5845254E5177CE /* Pods_cARdTests.framework */,
+				771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E10F965214D5D5600D44C9F /* Build configuration list for PBXNativeTarget "cARd" */;
 			buildPhases = (
+				7C80F8D4FCF8CA948D24C003 /* [CP] Check Pods Manifest.lock */,
 				6E10F939214D5D5400D44C9F /* Sources */,
 				6E10F93A214D5D5400D44C9F /* Frameworks */,
 				6E10F93B214D5D5400D44C9F /* Resources */,
+				6CA562234A5F0100A5EF5740 /* [CP] Embed Pods Frameworks */,
+				20AD332DC686FB06888EE19C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E10F968214D5D5600D44C9F /* Build configuration list for PBXNativeTarget "cARdTests" */;
 			buildPhases = (
+				E9A6408969268FB47EC4926F /* [CP] Check Pods Manifest.lock */,
 				6E10F94D214D5D5600D44C9F /* Sources */,
 				6E10F94E214D5D5600D44C9F /* Frameworks */,
 				6E10F94F214D5D5600D44C9F /* Resources */,
+				91760DCF41D8EDB51935BC89 /* [CP] Embed Pods Frameworks */,
+				AF8EC01A4CF3F8D75B661548 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E10F96B214D5D5600D44C9F /* Build configuration list for PBXNativeTarget "cARdUITests" */;
 			buildPhases = (
+				5430E3C2BC7932B93B64841D /* [CP] Check Pods Manifest.lock */,
 				6E10F958214D5D5600D44C9F /* Sources */,
 				6E10F959214D5D5600D44C9F /* Frameworks */,
 				6E10F95A214D5D5600D44C9F /* Resources */,
+				59CEA36D084288E7DD749A7F /* [CP] Embed Pods Frameworks */,
+				A683BBDCC7EBBC5C8DFF0D8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +299,153 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20AD332DC686FB06888EE19C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARd/Pods-cARd-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5430E3C2BC7932B93B64841D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cARdUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59CEA36D084288E7DD749A7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CA562234A5F0100A5EF5740 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARd/Pods-cARd-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C80F8D4FCF8CA948D24C003 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cARd-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91760DCF41D8EDB51935BC89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A683BBDCC7EBBC5C8DFF0D8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF8EC01A4CF3F8D75B661548 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9A6408969268FB47EC4926F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cARdTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E10F939214D5D5400D44C9F /* Sources */ = {
@@ -428,15 +624,13 @@
 		};
 		6E10F966214D5D5600D44C9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8619AB872A79B3E2A78D59 /* Pods-cARd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARd/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "c-ar-d.cARd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -446,15 +640,13 @@
 		};
 		6E10F967214D5D5600D44C9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 663892DAC078D518AD62C224 /* Pods-cARd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARd/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "c-ar-d.cARd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -464,17 +656,14 @@
 		};
 		6E10F969214D5D5600D44C9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9E7FEA7863D5B2DE25C647F /* Pods-cARdTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -485,17 +674,14 @@
 		};
 		6E10F96A214D5D5600D44C9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 053F775B7C8FD7AA14E2D349 /* Pods-cARdTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -506,16 +692,13 @@
 		};
 		6E10F96C214D5D5600D44C9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AD16ECEBE625CF589F95443 /* Pods-cARdUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -526,16 +709,13 @@
 		};
 		6E10F96D214D5D5600D44C9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
