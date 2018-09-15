@@ -16,6 +16,10 @@
 		6E10F961214D5D5600D44C9F /* cARdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10F960214D5D5600D44C9F /* cARdUITests.swift */; };
 		9CEB390ACB597BADB8A12450 /* Pods_cARd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */; };
 		AC1601636DCDEC750EF6AF51 /* Pods_cARdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */; };
+		BB4FA9BB214D6BA3007FC67A /* MainARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */; };
+		BB6D1F2E214D6BEE0048FA0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F2D214D6BEE0048FA0D /* Constants.swift */; };
+		BB6D1F30214D6C0D0048FA0D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F2F214D6C0D0048FA0D /* ContainerViewController.swift */; };
+		BB6D1F32214D6C4C0048FA0D /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F31214D6C4C0048FA0D /* MainNavigationViewController.swift */; };
 		D7C3B46C8887109A12EEB66A /* Pods_cARdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D469D0CD5845254E5177CE /* Pods_cARdTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,10 @@
 		9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A9E7FEA7863D5B2DE25C647F /* Pods-cARdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cARd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainARViewController.swift; sourceTree = "<group>"; };
+		BB6D1F2D214D6BEE0048FA0D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BB6D1F2F214D6C0D0048FA0D /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		BB6D1F31214D6C4C0048FA0D /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +122,13 @@
 		6E10F93F214D5D5400D44C9F /* cARd */ = {
 			isa = PBXGroup;
 			children = (
+				BB6D1F2D214D6BEE0048FA0D /* Constants.swift */,
 				6E10F940214D5D5500D44C9F /* AppDelegate.swift */,
 				6E10F942214D5D5500D44C9F /* ViewController.swift */,
 				6E10F944214D5D5500D44C9F /* Main.storyboard */,
+				BB6D1F31214D6C4C0048FA0D /* MainNavigationViewController.swift */,
+				BB6D1F2F214D6C0D0048FA0D /* ContainerViewController.swift */,
+				BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */,
 				6E10F947214D5D5600D44C9F /* Assets.xcassets */,
 				6E10F949214D5D5600D44C9F /* LaunchScreen.storyboard */,
 				6E10F94C214D5D5600D44C9F /* Info.plist */,
@@ -453,7 +465,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E10F943214D5D5500D44C9F /* ViewController.swift in Sources */,
+				BB6D1F32214D6C4C0048FA0D /* MainNavigationViewController.swift in Sources */,
+				BB4FA9BB214D6BA3007FC67A /* MainARViewController.swift in Sources */,
+				BB6D1F30214D6C0D0048FA0D /* ContainerViewController.swift in Sources */,
 				6E10F941214D5D5500D44C9F /* AppDelegate.swift in Sources */,
+				BB6D1F2E214D6BEE0048FA0D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,13 +644,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G54TLNA64K;
+				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = cARd/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "c-ar-d.cARd";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.isometric.cARd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -644,13 +664,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G54TLNA64K;
+				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = cARd/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "c-ar-d.cARd";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.isometric.cARd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -663,7 +687,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -681,7 +709,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -698,7 +730,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -715,7 +751,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G54TLNA64K;
 				INFOPLIST_FILE = cARdUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = card.cARdUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
