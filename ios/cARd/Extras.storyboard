@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rzb-1c-xqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rzb-1c-xqA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +48,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frH-TV-pOu">
-                                                            <rect key="frame" x="10" y="10" width="356" height="129.5"/>
+                                                            <rect key="frame" x="10" y="10" width="375" height="129.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UdZ-Cl-bBK">
                                                                     <rect key="frame" x="15" y="15" width="100" height="100"/>
@@ -66,7 +64,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfu-nV-igD">
-                                                                    <rect key="frame" x="130" y="41" width="235" height="16.5"/>
+                                                                    <rect key="frame" x="130" y="41" width="254" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -122,7 +120,7 @@
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="trailing" secondItem="MHf-xl-JRV" secondAttribute="trailing" id="38u-gk-h8h"/>
+                                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MHf-xl-JRV" secondAttribute="trailing" id="38u-gk-h8h"/>
                                                                                 <constraint firstAttribute="height" constant="50" id="V92-6E-Y0g"/>
                                                                                 <constraint firstItem="MHf-xl-JRV" firstAttribute="top" secondItem="eTC-i6-FhH" secondAttribute="top" id="hDG-Ct-pKK"/>
                                                                                 <constraint firstItem="MHf-xl-JRV" firstAttribute="height" secondItem="eTC-i6-FhH" secondAttribute="height" id="vMq-YI-3CB"/>
@@ -146,7 +144,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="FaI-QP-owe" firstAttribute="trailing" secondItem="frH-TV-pOu" secondAttribute="trailing" constant="19" id="3iL-SV-6eh"/>
+                                                                <constraint firstItem="FaI-QP-owe" firstAttribute="trailing" secondItem="frH-TV-pOu" secondAttribute="trailing" id="3iL-SV-6eh"/>
                                                                 <constraint firstItem="FaI-QP-owe" firstAttribute="bottom" secondItem="UdZ-Cl-bBK" secondAttribute="bottom" id="7ps-zA-Iwp"/>
                                                                 <constraint firstItem="jNz-aK-TIi" firstAttribute="leading" secondItem="UdZ-Cl-bBK" secondAttribute="trailing" constant="15" id="BWR-sy-obw"/>
                                                                 <constraint firstItem="UdZ-Cl-bBK" firstAttribute="leading" secondItem="frH-TV-pOu" secondAttribute="leading" constant="15" id="FIT-zl-0hj"/>
@@ -169,8 +167,9 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="buttonContentView" destination="eTC-i6-FhH" id="GjO-l9-Wg9"/>
                                                     <outlet property="buttonScrollView" destination="FaI-QP-owe" id="OGi-gS-rI8"/>
-                                                    <outlet property="buttonStackView" destination="eTC-i6-FhH" id="9nF-kP-Krj"/>
+                                                    <outlet property="buttonStackView" destination="MHf-xl-JRV" id="8hD-Ce-Kpc"/>
                                                     <outlet property="containerView" destination="frH-TV-pOu" id="mzS-cF-ZSJ"/>
                                                     <outlet property="nameLabel" destination="jNz-aK-TIi" id="GHY-NU-xFO"/>
                                                     <outlet property="pictureView" destination="UdZ-Cl-bBK" id="VkJ-sn-CyG"/>
@@ -201,6 +200,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i2r-0l-zhq"/>
                     </view>
+                    <connections>
+                        <outlet property="cardTableView" destination="CVX-iE-cXI" id="DIQ-gN-aXW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="roS-7R-KqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
