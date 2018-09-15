@@ -36,7 +36,10 @@ class Person: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-        
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.timestamp, forKey: "date")
+        aCoder.encode(self.phoneNumber, forKey: "number")
+        aCoder.encode(self.links, forKey: "links")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,8 +50,7 @@ class Person: NSObject, NSCoding {
     }
     
     func printDump(){
-        print("Name: \(self.name))")
-        
+        print("Name: \(self.name)\nDate: \(self.timestamp)\nLiks: \(self.links)")
     }
     
     

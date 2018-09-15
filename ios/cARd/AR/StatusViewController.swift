@@ -14,7 +14,7 @@ import ARKit
  the experience altogether.
 */
 class StatusViewController: UIViewController {
-
+ 
     enum MessageType {
         case trackingStateEscalation
         case contentPlacement
