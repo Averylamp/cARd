@@ -56,35 +56,5 @@
             </objects>
             <point key="canvasLocation" x="-660" y="707"/>
         </scene>
-        <!--History List View Controller-->
-        <scene sceneID="VXz-5V-K2u">
-            <objects>
-                <viewController storyboardIdentifier="HistoryListVC" id="by0-Si-9vZ" customClass="HistoryListViewController" customModule="cARd" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qIu-WZ-Lgj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ao9-Qk-mNl"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="35w-aG-Jmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1553" y="707"/>
-        </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="S5N-UZ-LSA">
-            <objects>
-                <viewController storyboardIdentifier="ProfileVC" id="eTW-7G-0yD" customClass="ProfileViewController" customModule="cARd" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vYp-Ac-3Zm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="AdI-4D-I0x"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="917-ij-ja2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2247" y="707"/>
-        </scene>
     </scenes>
 </document>
