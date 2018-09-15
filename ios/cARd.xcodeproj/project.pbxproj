@@ -129,13 +129,11 @@
 				BB6D1F2D214D6BEE0048FA0D /* Constants.swift */,
 				6E10F944214D5D5500D44C9F /* MainAR.storyboard */,
 				BB6D1F37214D72100048FA0D /* Extras.storyboard */,
-				6E10F940214D5D5500D44C9F /* AppDelegate.swift */,
-				BB6D1F35214D6EB60048FA0D /* ProfileViewController.swift */,
-				BB6D1F33214D6CEF0048FA0D /* HistoryListViewController.swift */,
-				BB6D1F31214D6C4C0048FA0D /* MainNavigationViewController.swift */,
-				BB6D1F2F214D6C0D0048FA0D /* ContainerViewController.swift */,
-				BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */,
+				BB6D1F3A214D79100048FA0D /* AR */,
+				BB6D1F3B214D79160048FA0D /* Extras */,
+				BB6D1F39214D79040048FA0D /* Navigation */,
 				6E10F947214D5D5600D44C9F /* Assets.xcassets */,
+				6E10F940214D5D5500D44C9F /* AppDelegate.swift */,
 				6E10F949214D5D5600D44C9F /* LaunchScreen.storyboard */,
 				6E10F94C214D5D5600D44C9F /* Info.plist */,
 			);
@@ -171,6 +169,32 @@
 				9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB6D1F39214D79040048FA0D /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				BB6D1F31214D6C4C0048FA0D /* MainNavigationViewController.swift */,
+				BB6D1F2F214D6C0D0048FA0D /* ContainerViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BB6D1F3A214D79100048FA0D /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		BB6D1F3B214D79160048FA0D /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				BB6D1F35214D6EB60048FA0D /* ProfileViewController.swift */,
+				BB6D1F33214D6CEF0048FA0D /* HistoryListViewController.swift */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 		DDBC80AB445A4107CF581B9C /* Frameworks */ = {
