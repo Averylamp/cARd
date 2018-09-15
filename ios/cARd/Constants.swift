@@ -10,19 +10,9 @@ import Foundation
 import UIKit
 
 class Constants{
+    
     static let selectionHapticFeedback = UISelectionFeedbackGenerator()
     static let notificationHapticFeedback = UINotificationFeedbackGenerator()
-    static let currentDay: Date = Date().addingTimeInterval(-60 * 60 * 24 * 3)
-    
-    static var diningHallMapping: [String: String] = [
-        "mccormick":"diningHallPreview0",
-        "simmons":"diningHallPreview1",
-        "baker":"diningHallPreview2",
-        "next":"diningHallPreview3",
-        "maseeh":"diningHallPreview5"
-    ]
-    
-    
     
     class func generateSelectionHapticFeedback(){
         selectionHapticFeedback.selectionChanged()
