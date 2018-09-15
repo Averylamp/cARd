@@ -101,13 +101,11 @@ class ContainerViewController: UIViewController {
             if let arVC = self.arVC, let historyVC = self.historyVC{
                 arVC.view.center.x += translation
                 historyVC.view.center.x += translation
-                print(arVC.view.frame.origin.x)
                 if arVC.view.frame.origin.x > 0 || historyVC.view.frame.origin.x + historyVC.view.frame.width < self.view.frame.width{
                     arVC.view.center.x -= translation
                     historyVC.view.center.x -= translation
                 }
-            }
-            
+            }            
             recognizer.setTranslation(CGPoint.zero, in: view)
         case .ended:
             if abs(recognizer.velocity(in: view).x) > 200{

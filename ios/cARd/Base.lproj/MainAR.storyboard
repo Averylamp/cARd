@@ -140,12 +140,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uhL-q5-O4F">
-                                <rect key="frame" x="20" y="248" width="335" height="191"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="height" multiplier="7:4" id="VN0-P2-sRh"/>
-                                </constraints>
-                            </imageView>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T02-Ee-y9X" customClass="ARSCNView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </sceneKitView>
@@ -166,6 +160,19 @@
                                     <segue destination="sEh-aQ-tO6" kind="embed" id="7QS-FZ-51c"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardTarget" translatesAutoresizingMaskIntoConstraints="NO" id="uhL-q5-O4F">
+                                <rect key="frame" x="20" y="248" width="335" height="191"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="height" multiplier="7:4" id="VN0-P2-sRh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAr-cU-vA6">
+                                <rect key="frame" x="20" y="248" width="335" height="191"/>
+                                <state key="normal" title="Do it"/>
+                                <connections>
+                                    <action selector="scanButtonClicked:" destination="cRK-xk-l85" eventType="touchUpInside" id="hJR-ku-fhR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -174,14 +181,18 @@
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="T02-Ee-y9X" secondAttribute="trailing" id="EoL-wP-e6i"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="top" secondItem="BZX-55-uEL" secondAttribute="top" id="EyQ-1f-skH"/>
                             <constraint firstItem="Mab-ha-IhP" firstAttribute="leading" secondItem="BZX-55-uEL" secondAttribute="leading" id="MKB-0a-TP8"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="width" id="N3Z-Bm-rRb"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="Nuz-qt-Dma"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="PCS-b0-Msw"/>
                             <constraint firstAttribute="bottom" secondItem="T02-Ee-y9X" secondAttribute="bottom" id="Rui-lP-is5"/>
                             <constraint firstItem="uhL-q5-O4F" firstAttribute="centerY" secondItem="YGe-Hv-dBb" secondAttribute="centerY" id="WAY-JR-h9d"/>
                             <constraint firstItem="uhL-q5-O4F" firstAttribute="width" secondItem="BZX-55-uEL" secondAttribute="width" constant="-40" id="WeC-Qh-6At"/>
                             <constraint firstAttribute="trailing" secondItem="Mab-ha-IhP" secondAttribute="trailing" id="Xdf-jo-2gK"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="centerX" secondItem="uhL-q5-O4F" secondAttribute="centerX" id="XnX-2b-50B"/>
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="lZX-kX-eDH" secondAttribute="trailing" id="f4L-v5-Nyv"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="top" secondItem="YGe-Hv-dBb" secondAttribute="top" id="fjx-2Q-9Zw"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="height" secondItem="uhL-q5-O4F" secondAttribute="height" id="u3x-lc-EuE"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="centerY" secondItem="uhL-q5-O4F" secondAttribute="centerY" id="vSn-0p-DHZ"/>
                             <constraint firstItem="uhL-q5-O4F" firstAttribute="centerX" secondItem="YGe-Hv-dBb" secondAttribute="centerX" id="www-40-akI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YGe-Hv-dBb"/>
@@ -189,6 +200,8 @@
                     <navigationItem key="navigationItem" id="c9h-aU-lbX"/>
                     <connections>
                         <outlet property="blurView" destination="Mab-ha-IhP" id="1AP-Nj-YGH"/>
+                        <outlet property="cardTargetImageView" destination="uhL-q5-O4F" id="B4x-yO-yw9"/>
+                        <outlet property="scanCardButton" destination="RAr-cU-vA6" id="QTN-CK-dsr"/>
                         <outlet property="sceneView" destination="T02-Ee-y9X" id="vNe-1H-nH0"/>
                     </connections>
                 </viewController>
@@ -198,6 +211,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cardTarget" width="700" height="400"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
     </resources>

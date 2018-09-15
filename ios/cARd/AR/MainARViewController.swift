@@ -22,6 +22,12 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    @IBOutlet weak var cardTargetImageView: UIImageView!
+    
+    @IBOutlet weak var scanCardButton: UIButton!
+    
+    
+    
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return childViewControllers.lazy.compactMap({ $0 as? StatusViewController }).first!
@@ -140,4 +146,23 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             .fadeOut(duration: 0.5),
             .removeFromParentNode()
             ])
-    }}
+    }
+    
+    
+    
+    //MARK: - UIActions
+    
+    
+    @IBAction func scanButtonClicked(_ sender: Any) {
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+}
