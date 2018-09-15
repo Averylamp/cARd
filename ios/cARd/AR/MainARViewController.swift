@@ -154,7 +154,15 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func scanButtonClicked(_ sender: Any) {
-        
+        if let currentFrame = self.session.currentFrame{
+            let currentFrameImage = UIImage(pixelBuffer: currentFrame.capturedImage)
+            let cfImage = self.sceneView.snapshot()
+            
+//            currentFrame.capturedImage
+            print("Here")
+            
+            
+        }
         
         
         

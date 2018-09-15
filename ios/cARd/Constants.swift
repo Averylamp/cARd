@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import VideoToolbox
 
 class Constants{
     
@@ -66,4 +67,18 @@ extension UIViewController{
     }
     
 }
+
+extension UIImage {
+    public convenience init?(pixelBuffer: CVPixelBuffer) {
+        var cgImage: CGImage?
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &cgImage)
+        
+        if let cgImage = cgImage {
+            self.init(cgImage: cgImage)
+        } else {
+            return nil
+        }
+    }
+}
+
 
