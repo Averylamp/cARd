@@ -10,21 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MainAR View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="MainARVC" id="BYZ-38-t0r" customClass="MainARViewController" customModule="cARd" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="810" y="707"/>
-        </scene>
         <!--Container View Controller-->
         <scene sceneID="s5X-Tb-1mj">
             <objects>
@@ -49,12 +34,163 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Ckn-Ij-m1H" kind="relationship" relationship="rootViewController" id="54g-gG-aks"/>
+                        <segue destination="cRK-xk-l85" kind="relationship" relationship="rootViewController" id="bvq-O2-n3r"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2U-XA-Liu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-660" y="707"/>
         </scene>
+        <!--Status View Controller-->
+        <scene sceneID="nCW-T8-ZKe">
+            <objects>
+                <viewController id="sEh-aQ-tO6" customClass="StatusViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BQx-pn-Luf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="h5W-aJ-5CB" userLabel="Message Panel">
+                                <rect key="frame" x="16" y="20" width="125" height="32"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YGY-Kk-cec">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVz-7T-x7S">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IVX-Xf-40R">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCo-ds-qp6" userLabel="Messages label">
+                                                        <rect key="frame" x="16" y="8" width="93" height="16"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                        <nil key="textColor"/>
+                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="shadowOffset" width="1" height="1"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="GCo-ds-qp6" firstAttribute="trailing" secondItem="IVX-Xf-40R" secondAttribute="trailing" constant="-16" id="4KG-qS-A7F"/>
+                                                    <constraint firstItem="GCo-ds-qp6" firstAttribute="top" secondItem="IVX-Xf-40R" secondAttribute="top" constant="8" id="YxX-Vq-Yni"/>
+                                                    <constraint firstItem="GCo-ds-qp6" firstAttribute="leading" secondItem="IVX-Xf-40R" secondAttribute="leading" constant="16" id="fv6-Qt-skO"/>
+                                                    <constraint firstItem="GCo-ds-qp6" firstAttribute="centerY" secondItem="IVX-Xf-40R" secondAttribute="centerY" id="huh-eV-CKY"/>
+                                                </constraints>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="extraLight"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nVz-7T-x7S" firstAttribute="leading" secondItem="YGY-Kk-cec" secondAttribute="leading" id="7rN-eB-wOJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="nVz-7T-x7S" secondAttribute="trailing" id="C9L-rB-YJt"/>
+                                        <constraint firstItem="nVz-7T-x7S" firstAttribute="top" secondItem="YGY-Kk-cec" secondAttribute="top" id="Nv3-V3-qvR"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="GCo-ds-qp6" secondAttribute="bottom" constant="8" id="AJo-3g-y2Q"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-gp-pJO" userLabel="Restart Experience Button Icon">
+                                <rect key="frame" x="331" y="0.0" width="44" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="ome-Dp-62B"/>
+                                    <constraint firstAttribute="width" constant="44" id="pPa-Fd-sQg"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="12"/>
+                                <state key="normal" image="restart"/>
+                                <state key="selected" image="restartPressed"/>
+                                <state key="highlighted" image="restartPressed"/>
+                                <connections>
+                                    <action selector="restartExperience:" destination="sEh-aQ-tO6" eventType="touchUpInside" id="L38-hN-FN9"/>
+                                    <action selector="restartExperience:" destination="cRK-xk-l85" eventType="touchUpInside" id="TZt-IJ-QEg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h5W-aJ-5CB" firstAttribute="top" secondItem="GO6-gp-pJO" secondAttribute="top" constant="20" id="Gef-nr-ORe"/>
+                            <constraint firstItem="GO6-gp-pJO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h5W-aJ-5CB" secondAttribute="trailing" constant="8" id="aCX-7v-mZ9"/>
+                            <constraint firstItem="h5W-aJ-5CB" firstAttribute="leading" secondItem="8TU-pf-PE1" secondAttribute="leading" constant="16" id="djD-ZX-6Xx"/>
+                            <constraint firstItem="8TU-pf-PE1" firstAttribute="trailing" secondItem="GO6-gp-pJO" secondAttribute="trailing" id="fb4-nD-hv2"/>
+                            <constraint firstItem="GO6-gp-pJO" firstAttribute="top" secondItem="8TU-pf-PE1" secondAttribute="top" id="rTB-71-MYq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8TU-pf-PE1"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="GCo-ds-qp6" id="1RV-CF-HAH"/>
+                        <outlet property="messagePanel" destination="h5W-aJ-5CB" id="ozI-sc-aLO"/>
+                        <outlet property="restartExperienceButton" destination="GO6-gp-pJO" id="LsQ-PT-APN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ao-23-tJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="235"/>
+        </scene>
+        <!--MainAR View Controller-->
+        <scene sceneID="XNB-QQ-v94">
+            <objects>
+                <viewController storyboardIdentifier="MainARVC" id="cRK-xk-l85" customClass="MainARViewController" customModule="cARd" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BZX-55-uEL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T02-Ee-y9X" customClass="ARSCNView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </sceneKitView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mab-ha-IhP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eIB-Dm-BTD">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZX-kX-eDH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="zwz-1Y-vhp"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="sEh-aQ-tO6" kind="embed" id="7QS-FZ-51c"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mab-ha-IhP" firstAttribute="top" secondItem="BZX-55-uEL" secondAttribute="top" id="346-6a-wnx"/>
+                            <constraint firstAttribute="bottom" secondItem="Mab-ha-IhP" secondAttribute="bottom" id="7il-ju-qWG"/>
+                            <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="T02-Ee-y9X" secondAttribute="trailing" id="EoL-wP-e6i"/>
+                            <constraint firstItem="T02-Ee-y9X" firstAttribute="top" secondItem="BZX-55-uEL" secondAttribute="top" id="EyQ-1f-skH"/>
+                            <constraint firstItem="Mab-ha-IhP" firstAttribute="leading" secondItem="BZX-55-uEL" secondAttribute="leading" id="MKB-0a-TP8"/>
+                            <constraint firstItem="T02-Ee-y9X" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="Nuz-qt-Dma"/>
+                            <constraint firstItem="lZX-kX-eDH" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="PCS-b0-Msw"/>
+                            <constraint firstAttribute="bottom" secondItem="T02-Ee-y9X" secondAttribute="bottom" id="Rui-lP-is5"/>
+                            <constraint firstAttribute="trailing" secondItem="Mab-ha-IhP" secondAttribute="trailing" id="Xdf-jo-2gK"/>
+                            <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="lZX-kX-eDH" secondAttribute="trailing" id="f4L-v5-Nyv"/>
+                            <constraint firstItem="lZX-kX-eDH" firstAttribute="top" secondItem="YGe-Hv-dBb" secondAttribute="top" id="fjx-2Q-9Zw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YGe-Hv-dBb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="c9h-aU-lbX"/>
+                    <connections>
+                        <outlet property="blurView" destination="Mab-ha-IhP" id="1AP-Nj-YGH"/>
+                        <outlet property="sceneView" destination="T02-Ee-y9X" id="vNe-1H-nH0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSf-aC-ZFw" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="822" y="707"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="restart" width="16" height="16"/>
+        <image name="restartPressed" width="16" height="16"/>
+    </resources>
 </document>
