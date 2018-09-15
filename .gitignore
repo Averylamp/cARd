@@ -19,7 +19,6 @@ build/
 !default.perspectivev3
 xcuserdata/
 */xcuserdata/*
-Dwell-Identity-IOS.xcworkspace/xcuserdata/*
 
 ## Other
 *.moved-aside
