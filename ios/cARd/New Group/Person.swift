@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LinkTypes: String{
+enum LinkType: String{
     case twitter = "twitter"
     case facebook = "facebook"
     case devpost = "devpost"
@@ -17,17 +17,24 @@ enum LinkTypes: String{
     case phoneText = "phone-text"
     case phoneFacetime = "phone-facetime"
     case website = "website"
+    case unknown = "unknown"
 }
 
 
 
-class Person: NSObject, NSCoding {
+class Person: NSObject,  NSCoding {
     
-    var links: [LinkTypes: String] = [:]
+    var links: [String: [String]] = [:]
     let name: String
     let timestamp: Date
     var phoneNumber: String?
     
+    private enum CodingKeys: CodingKey {
+        case links
+        case name
+        case timestamp
+        case phoneNumber
+    }
     
     init(name: String) {
         self.name = name
@@ -42,13 +49,23 @@ class Person: NSObject, NSCoding {
         aCoder.encode(self.links, forKey: "links")
     }
     
+    func addLink(type:LinkType, link: String){
+        if var linksArray = self.links[type.rawValue] as? [String]{
+            linksArray.append(link)
+        }else{
+            self.links.updateValue([link], forKey: type.rawValue)
+        }
+        
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
         self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
-        self.links = aDecoder.decodeObject(forKey: "links") as! [LinkTypes: String]
+        self.links = aDecoder.decodeObject(forKey: "links") as! [String: [String]]
     }
-    
+
     func printDump(){
         print("Name: \(self.name)\nDate: \(self.timestamp)\nLiks: \(self.links)")
     }
