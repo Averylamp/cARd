@@ -21,7 +21,7 @@ enum LinkTypes: String{
 
 
 
-class Person: NSObject {
+class Person: NSObject, NSCoding {
     
     var links: [LinkTypes: String] = [:]
     let name: String
@@ -33,6 +33,22 @@ class Person: NSObject {
         self.name = name
         self.timestamp = Date()
         super.init()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
+        self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
+        self.links = aDecoder.decodeObject(forKey: "links") as! [LinkTypes: String]
+    }
+    
+    func printDump(){
+        print("Name: \(self.name))")
+        
     }
     
     
