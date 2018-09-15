@@ -19,7 +19,7 @@ class Constants{
         selectionHapticFeedback.selectionChanged()
     }
     
-    class func generateNotificationHapticFeedback(feedback:UINotificationFeedbackGenerator.FeedbackType){
+    class func generateNotificationHapticFeedback(feedback: UINotificationFeedbackGenerator.FeedbackType){
         notificationHapticFeedback.notificationOccurred(feedback)
     }
     

@@ -13,6 +13,7 @@
 		6E10F94B214D5D5600D44C9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E10F949214D5D5600D44C9F /* LaunchScreen.storyboard */; };
 		6E10F956214D5D5600D44C9F /* cARdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10F955214D5D5600D44C9F /* cARdTests.swift */; };
 		6E10F961214D5D5600D44C9F /* cARdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E10F960214D5D5600D44C9F /* cARdUITests.swift */; };
+		6E389B31214D8BA6002E1483 /* BusinessCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E389B30214D8BA6002E1483 /* BusinessCardCell.swift */; };
 		9CEB390ACB597BADB8A12450 /* Pods_cARd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0964B44E5BFD2E2CC7C6E6 /* Pods_cARd.framework */; };
 		AC1601636DCDEC750EF6AF51 /* Pods_cARdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */; };
 		BB4FA9BB214D6BA3007FC67A /* MainARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */; };
@@ -22,10 +23,6 @@
 		BB6D1F34214D6CEF0048FA0D /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F33214D6CEF0048FA0D /* HistoryListViewController.swift */; };
 		BB6D1F36214D6EB60048FA0D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F35214D6EB60048FA0D /* ProfileViewController.swift */; };
 		BB6D1F38214D72100048FA0D /* Extras.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D1F37214D72100048FA0D /* Extras.storyboard */; };
-		BB6D1F3D214D79DB0048FA0D /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F3C214D79DA0048FA0D /* StatusViewController.swift */; };
-		BB6D1F3F214D7A840048FA0D /* MainARViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F3E214D7A840048FA0D /* MainARViewController+ARSessionDelegate.swift */; };
-		BB6D1F44214DAA0A0048FA0D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F43214DAA0A0048FA0D /* Person.swift */; };
-		BB6D1F46214DAA420048FA0D /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D1F45214DAA420048FA0D /* ServerManager.swift */; };
 		D7C3B46C8887109A12EEB66A /* Pods_cARdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D469D0CD5845254E5177CE /* Pods_cARdTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +60,7 @@
 		6E10F95C214D5D5600D44C9F /* cARdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cARdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E10F960214D5D5600D44C9F /* cARdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cARdUITests.swift; sourceTree = "<group>"; };
 		6E10F962214D5D5600D44C9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E389B30214D8BA6002E1483 /* BusinessCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardCell.swift; sourceTree = "<group>"; };
 		771B8605F68AB54832E4010E /* Pods_cARdUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cARdUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD16ECEBE625CF589F95443 /* Pods-cARdUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DEA2AA8B345F4983106EB13 /* Pods-cARdUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cARdUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,10 +73,6 @@
 		BB6D1F33214D6CEF0048FA0D /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		BB6D1F35214D6EB60048FA0D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BB6D1F37214D72100048FA0D /* Extras.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Extras.storyboard; sourceTree = "<group>"; };
-		BB6D1F3C214D79DA0048FA0D /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
-		BB6D1F3E214D7A840048FA0D /* MainARViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainARViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
-		BB6D1F43214DAA0A0048FA0D /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		BB6D1F45214DAA420048FA0D /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServerManager.swift; path = /Users/avery/Developer/projects/cARd/ios/cARd/Model/ServerManager.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +131,6 @@
 				BB6D1F2D214D6BEE0048FA0D /* Constants.swift */,
 				6E10F944214D5D5500D44C9F /* MainAR.storyboard */,
 				BB6D1F37214D72100048FA0D /* Extras.storyboard */,
-				BB6D1F42214DA9E10048FA0D /* Model */,
 				BB6D1F3A214D79100048FA0D /* AR */,
 				BB6D1F3B214D79160048FA0D /* Extras */,
 				BB6D1F39214D79040048FA0D /* Navigation */,
@@ -192,9 +185,7 @@
 		BB6D1F3A214D79100048FA0D /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				BB6D1F3C214D79DA0048FA0D /* StatusViewController.swift */,
 				BB4FA9BA214D6BA3007FC67A /* MainARViewController.swift */,
-				BB6D1F3E214D7A840048FA0D /* MainARViewController+ARSessionDelegate.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -204,17 +195,9 @@
 			children = (
 				BB6D1F35214D6EB60048FA0D /* ProfileViewController.swift */,
 				BB6D1F33214D6CEF0048FA0D /* HistoryListViewController.swift */,
+				6E389B30214D8BA6002E1483 /* BusinessCardCell.swift */,
 			);
 			path = Extras;
-			sourceTree = "<group>";
-		};
-		BB6D1F42214DA9E10048FA0D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BB6D1F45214DAA420048FA0D /* ServerManager.swift */,
-				BB6D1F43214DAA0A0048FA0D /* Person.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DDBC80AB445A4107CF581B9C /* Frameworks */ = {
@@ -238,8 +221,6 @@
 				6E10F939214D5D5400D44C9F /* Sources */,
 				6E10F93A214D5D5400D44C9F /* Frameworks */,
 				6E10F93B214D5D5400D44C9F /* Resources */,
-				6CA562234A5F0100A5EF5740 /* [CP] Embed Pods Frameworks */,
-				20AD332DC686FB06888EE19C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,8 +239,6 @@
 				6E10F94D214D5D5600D44C9F /* Sources */,
 				6E10F94E214D5D5600D44C9F /* Frameworks */,
 				6E10F94F214D5D5600D44C9F /* Resources */,
-				91760DCF41D8EDB51935BC89 /* [CP] Embed Pods Frameworks */,
-				AF8EC01A4CF3F8D75B661548 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,8 +258,6 @@
 				6E10F958214D5D5600D44C9F /* Sources */,
 				6E10F959214D5D5600D44C9F /* Frameworks */,
 				6E10F95A214D5D5600D44C9F /* Resources */,
-				59CEA36D084288E7DD749A7F /* [CP] Embed Pods Frameworks */,
-				A683BBDCC7EBBC5C8DFF0D8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -364,21 +341,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20AD332DC686FB06888EE19C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARd/Pods-cARd-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5430E3C2BC7932B93B64841D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,36 +359,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		59CEA36D084288E7DD749A7F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6CA562234A5F0100A5EF5740 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARd/Pods-cARd-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7C80F8D4FCF8CA948D24C003 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,51 +375,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91760DCF41D8EDB51935BC89 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A683BBDCC7EBBC5C8DFF0D8B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdUITests/Pods-cARdUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF8EC01A4CF3F8D75B661548 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cARdTests/Pods-cARdTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E9A6408969268FB47EC4926F /* [CP] Check Pods Manifest.lock */ = {
@@ -515,17 +402,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB6D1F44214DAA0A0048FA0D /* Person.swift in Sources */,
-				BB6D1F3D214D79DB0048FA0D /* StatusViewController.swift in Sources */,
 				BB6D1F32214D6C4C0048FA0D /* MainNavigationViewController.swift in Sources */,
 				BB6D1F34214D6CEF0048FA0D /* HistoryListViewController.swift in Sources */,
 				BB4FA9BB214D6BA3007FC67A /* MainARViewController.swift in Sources */,
 				BB6D1F30214D6C0D0048FA0D /* ContainerViewController.swift in Sources */,
 				6E10F941214D5D5500D44C9F /* AppDelegate.swift in Sources */,
-				BB6D1F3F214D7A840048FA0D /* MainARViewController+ARSessionDelegate.swift in Sources */,
 				BB6D1F36214D6EB60048FA0D /* ProfileViewController.swift in Sources */,
 				BB6D1F2E214D6BEE0048FA0D /* Constants.swift in Sources */,
-				BB6D1F46214DAA420048FA0D /* ServerManager.swift in Sources */,
+				6E389B31214D8BA6002E1483 /* BusinessCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
