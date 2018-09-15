@@ -48,7 +48,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frH-TV-pOu">
-                                                            <rect key="frame" x="10" y="10" width="375" height="129.5"/>
+                                                            <rect key="frame" x="10" y="10" width="355" height="129.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UdZ-Cl-bBK">
                                                                     <rect key="frame" x="15" y="15" width="100" height="100"/>
@@ -64,15 +64,15 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfu-nV-igD">
-                                                                    <rect key="frame" x="130" y="41" width="254" height="16.5"/>
+                                                                    <rect key="frame" x="130" y="41" width="234" height="16.5"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaI-QP-owe">
+                                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FaI-QP-owe">
                                                                     <rect key="frame" x="130" y="65" width="245" height="50"/>
                                                                     <subviews>
-                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTC-i6-FhH" userLabel="Content View">
+                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTC-i6-FhH" userLabel="Content View">
                                                                             <rect key="frame" x="0.0" y="0.0" width="245" height="50"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MHf-xl-JRV">
@@ -118,10 +118,9 @@
                                                                                     </constraints>
                                                                                 </stackView>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MHf-xl-JRV" secondAttribute="trailing" id="38u-gk-h8h"/>
-                                                                                <constraint firstAttribute="height" constant="50" id="V92-6E-Y0g"/>
                                                                                 <constraint firstItem="MHf-xl-JRV" firstAttribute="top" secondItem="eTC-i6-FhH" secondAttribute="top" id="hDG-Ct-pKK"/>
                                                                                 <constraint firstItem="MHf-xl-JRV" firstAttribute="height" secondItem="eTC-i6-FhH" secondAttribute="height" id="vMq-YI-3CB"/>
                                                                                 <constraint firstItem="MHf-xl-JRV" firstAttribute="leading" secondItem="eTC-i6-FhH" secondAttribute="leading" id="w3M-l7-PDO"/>
@@ -130,14 +129,8 @@
                                                                         </view>
                                                                     </subviews>
                                                                     <constraints>
-                                                                        <constraint firstItem="eTC-i6-FhH" firstAttribute="leading" secondItem="FaI-QP-owe" secondAttribute="leading" id="5Ll-lE-fdS"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="eTC-i6-FhH" secondAttribute="bottom" id="6O6-j6-4Qk"/>
                                                                         <constraint firstItem="eTC-i6-FhH" firstAttribute="height" secondItem="FaI-QP-owe" secondAttribute="height" id="BDS-rJ-NKQ"/>
-                                                                        <constraint firstItem="eTC-i6-FhH" firstAttribute="top" secondItem="FaI-QP-owe" secondAttribute="top" id="CzG-Kh-Ino"/>
-                                                                        <constraint firstItem="eTC-i6-FhH" firstAttribute="width" secondItem="FaI-QP-owe" secondAttribute="width" id="PS4-MD-IYY"/>
                                                                         <constraint firstItem="eTC-i6-FhH" firstAttribute="centerY" secondItem="FaI-QP-owe" secondAttribute="centerY" id="dew-Ry-y8h"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="eTC-i6-FhH" secondAttribute="trailing" id="o7F-3d-8j1"/>
-                                                                        <constraint firstItem="eTC-i6-FhH" firstAttribute="centerX" secondItem="FaI-QP-owe" secondAttribute="centerX" id="qqw-G8-Beu"/>
                                                                         <constraint firstAttribute="height" constant="50" id="sMF-jj-ecP"/>
                                                                     </constraints>
                                                                 </scrollView>

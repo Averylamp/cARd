@@ -18,12 +18,11 @@ class HistoryListViewController: UIViewController {
         super.viewDidLoad()
 
         cardTableView.separatorStyle = .none
+        cardTableView.allowsSelection = false
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
     }
-    
-
 }
 
 extension HistoryListViewController: UITableViewDelegate {
