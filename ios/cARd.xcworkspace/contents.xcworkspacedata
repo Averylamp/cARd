@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/avery/Developer/projects/cARd/ios/cARd/Model/ServerManager.swift">
+   </FileRef>
+   <FileRef
       location = "group:cARd.xcodeproj">
    </FileRef>
    <FileRef

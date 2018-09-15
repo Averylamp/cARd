@@ -154,17 +154,10 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func scanButtonClicked(_ sender: Any) {
-        if let currentFrame = self.session.currentFrame{
-            let currentFrameImage = UIImage(pixelBuffer: currentFrame.capturedImage)
-            let cfImage = self.sceneView.snapshot()
-            
-//            currentFrame.capturedImage
-            print("Here")
-            
-            
-        }
-        
-        
+        let currentFrameImage = self.sceneView.snapshot()
+        let imageScale = currentFrameImage.size.height / self.view.frame.height
+        let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: 0, y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: currentFrameImage.size.width, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
+        print("Here")
         
     }
     

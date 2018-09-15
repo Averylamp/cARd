@@ -79,6 +79,14 @@ extension UIImage {
             return nil
         }
     }
+    
+    func cropImage(toRect rect:CGRect) -> UIImage{
+        let imageRef:CGImage = self.cgImage!.cropping(to: rect)!
+        let cropped:UIImage = UIImage(cgImage:imageRef)
+        return cropped
+    }
+
+    
 }
 
 
