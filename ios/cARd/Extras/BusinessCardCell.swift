@@ -88,7 +88,13 @@ class BusinessCardCell: UITableViewCell {
         containerView.layer.shadowOpacity = 0.5
         containerView.layer.shadowPath = shadowPath.cgPath
         
-        pictureView.image = person?.profileImage
+        if let profileImage = person?.profileImageURL{
+        let profileImageURL = URL(string: profileImage)
+            pictureView.sd_setImage(with: profileImageURL, placeholderImage: UIImage(named: "pikachu"))
+        }else{
+            pictureView.image = UIImage(named: "pikachu")
+        }
+        
         pictureView.contentMode = .scaleAspectFill
         pictureView.layer.cornerRadius = pictureView.frame.width/2
         pictureView.clipsToBounds = true

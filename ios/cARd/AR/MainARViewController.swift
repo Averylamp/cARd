@@ -222,12 +222,12 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         
         var buttonOffsets:[(CGFloat, CGFloat)] = []
-        if let image = person.profileImage {
+        if let imageURLStr = person.profileImageURL , let imageURL = URL(string:imageURLStr){
             buttonOffsets = [(-4.5, -4.5), (-1.5, -5.5), (1.5, -5.5), (4.5, -4.5), (-4.5, 4.5), (-1.5, 5.5), (1.5, 5.5), (4.5, 4.5), (6, 1.5), (6, -1.5)]
             let imageGeometry = SCNCylinder(radius: 0.02, height: 0.005)
             DispatchQueue.main.async {
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                imageView.image = image
+                imageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "pikachu"))
                 imageGeometry.firstMaterial?.diffuse.contents = imageView
                 let imageNode = SCNNode(geometry: imageGeometry)
                 imageNode.position.x += -0.07
@@ -249,20 +249,20 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             let buttonGeo = SCNBox(width: size, height: 0.003, length: size, chamferRadius: 0.5 )
             
-            let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-            buttonView.backgroundColor = UIColor.white
-            let buttonImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 50, height: 50))
-            buttonImage.contentMode = .scaleAspectFit
-            buttonImage.image = UIImage(named: linkType)
-            buttonView.addSubview(buttonImage)
-            
-            buttonGeo.firstMaterial?.diffuse.contents = buttonView
-            
+            DispatchQueue.main.async {
+                let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                buttonView.backgroundColor = UIColor.white
+                let buttonImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 50, height: 50))
+                buttonImage.contentMode = .scaleAspectFit
+                buttonImage.image = UIImage(named: linkType)
+                buttonView.addSubview(buttonImage)
+                
+                buttonGeo.firstMaterial?.diffuse.contents = buttonView
+            }
             
             let buttonNode = ARButtonNode(geometry: buttonGeo)
             buttonNode.setup(person: person, linkType: linkType, link: link)
             buttonNode.person = person
-            
             
             buttonNode.opacity = 0.0
 //            buttonNode.position.y += 0.01
