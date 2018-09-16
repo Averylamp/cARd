@@ -103,7 +103,7 @@ class LinkedInScraper(BaseScraper):
                 field_of_study = None
 
             profile.createEducation(school_name, degree, field_of_study, from_date, to_date) 
-            return profile
+        return profile
 
 
 class LinkedInProfile(BaseProfile):
