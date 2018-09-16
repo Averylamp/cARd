@@ -3,7 +3,6 @@ import re
 from MAEZ.scrapers.Google import GoogleScraper
 from MAEZ.scrapers.LinkedIn import LinkedInScraper
 
-@memoize
 def get_person(name, phone_number, email):
     g = GoogleScraper()
     linkedin_urls = g.scrape_by_name(user=name)
