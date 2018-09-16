@@ -39,6 +39,10 @@ class LinkedInScraper(BaseScraper):
         headline = self.driver.find_element_by_class_name("pv-top-card-section__headline").text
         profile.set_headline(headline)
 
+        picture = self.driver.find_element_by_class_name("pv-top-card-section__photo").get_attribute("style")
+        picture = re.sub('background-image: url\("([^"])*"\);', picture)
+        profile.set_profile_picture(picture)
+
         locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
         if len(locality) > 0:
             profile.set_locality(locality[0].text)
