@@ -207,7 +207,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
         print("Fetching image")
         
-    
+        self.statusViewController.showMessage("Scanning and analyzing business card...")
         ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
             DispatchQueue.main.async {
                 self.addImageForTracking(image: trackingImage, person: person)
@@ -285,20 +285,23 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         if rec.state == .ended {
             let location: CGPoint = rec.location(in: sceneView)
             let hits = self.sceneView.hitTest(location, options: nil)
-            if !hits.isEmpty, let tappedNode = hits.first?.node, let buttonNode = tappedNode as? ARButtonNode{
-                
+            if !hits.isEmpty, let tappedNode = hits.first?.node, let buttonNode = tappedNode as? ARButtonNode, let linkType = buttonNode.linkType, let link = buttonNode.linkString, let url = URL(string: link){
+                self.openLink(linkType: linkType, link: url)
             }
         }
     }
     
-    
-    func openLink(linkType: String, link: String){
-//        switch linkType {
-//        case LinkType.email.rawValue:
-//            Routing.openURL(url: <#T##URL#>)
-//        default:
-//            <#code#>
-//        }
+    func openLink(linkType: String, link: URL){
+        print("Opening \(linkType) link")
+        self.statusViewController.showMessage("Opening \(linkType) link")
+        switch linkType {
+        case LinkType.email.rawValue:
+            Routing.openURL(url: link)
+            break
+        default:
+            Routing.openURL(url: link)
+            break
+        }
     }
     
     

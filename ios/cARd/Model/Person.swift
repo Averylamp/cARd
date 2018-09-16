@@ -142,9 +142,8 @@ class Person: NSObject,  NSCoding {
     }
     
     func setPhoneNumber(number: String){
-        self.links[LinkType.phoneCall.rawValue] = "tel://\(number)"
-//        self.links["phoneFacetime"] = number
-        self.links[LinkType.phoneText.rawValue] = "sms://\(number)"
+        self.addLink(type: LinkType.phoneCall, link: "tel://\(number)")
+        self.addLink(type: LinkType.phoneText, link: "sms://\(number)")
         self.phoneNumber = number
     }
     

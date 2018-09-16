@@ -80,4 +80,24 @@ class ServerManager {
         }
     }
     
+    
+    func searchByName(name: String, completion: @escaping ((Person) -> Void)){
+        
+        if let url = URL(string: "http://turtle.mit.edu:5000/search_person?name=\(name)"){
+            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                if (error != nil) {
+                    print(error)
+                } else {
+                    guard let data = data, let json = try? JSON(data: data) else{return}
+                    let person = Person(json: json)
+                    self.addPerson(person: person)
+                    
+                    completion(person)
+                }
+            }
+            
+            task.resume()        
+        }
+    }
+    
 }

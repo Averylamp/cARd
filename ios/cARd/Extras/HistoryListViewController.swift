@@ -10,6 +10,7 @@ import UIKit
 
 class HistoryListViewController: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var cardTableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,6 +25,20 @@ class HistoryListViewController: UIViewController {
             self.cardTableView.reloadData()
         }
     }
+    
+    
+    
+    
+    
+    @IBAction func searchButtonClicked(_ sender: Any) {
+        if let name = nameTextField.text, name.count > 0{
+            ServerManager.sharedInstance.searchByName(name: name) { (person) in
+                self.cardTableView.reloadData()
+            }
+        }
+    }
+    
+    
 }
 
 extension HistoryListViewController: UITableViewDelegate {
@@ -69,6 +84,13 @@ extension HistoryListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension HistoryListViewController: BusinessCardCellDelegate {
