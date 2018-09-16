@@ -46,10 +46,14 @@ def handle_image():
     person_data = get_person(google_search_string, phone, email)
     return_template['information'] = person_data
 
+    print(person_data)
+
     processed_image = get_cropped_and_rectified_image(image)
     # convert to base64to return
     processed_image_string = encode_image_as_base64(processed_image)
     return_template['cropped_image'] = processed_image_string.decode("utf-8")
+    
+    print("Success")
 
     return jsonify(return_template)
 

@@ -36,7 +36,7 @@ class LinkedInScraper(BaseScraper):
     def extract_profile(self):
         time.sleep(0.4)
         name = self.driver.find_element_by_class_name("pv-top-card-section__name").text 
-        first, last = name.split(" ")
+        first, last = name.split(" ")[0], name.split(" ")[-1]
         profile = LinkedInProfile(first, last)
 
         headline = self.driver.find_element_by_class_name("pv-top-card-section__headline").text
@@ -52,17 +52,24 @@ class LinkedInScraper(BaseScraper):
         locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
         if len(locality) > 0:
             profile.set_locality(locality[0].text)
+        try:
+            conn_num = self.driver.find_element_by_class_name("pv-top-card-v2-section__entity-name").text
+            conn_num = conn_num.split(" connections")[0]
+            profile.set_connections(conn_num)
+        except:
+            profile.set_connections(0)
         
-        conn_num = self.driver.find_element_by_class_name("pv-top-card-v2-section__entity-name").text
-        conn_num = conn_num.split(" connections")[0]
-        profile.set_connections(conn_num)
+        try:
+            employer = self.driver.find_element_by_class_name("pv-top-card-v2-section__company-name").text
+            profile.set_current_employer(employer)
+        except:
+            profile.set_current_employer("")
 
-        employer = self.driver.find_element_by_class_name("pv-top-card-v2-section__company-name").text
-        profile.set_current_employer(employer)
-
-        education = self.driver.find_element_by_class_name("pv-top-card-v2-section__school-name").text
-        profile.set_education(education)
-
+        try:
+            education = self.driver.find_element_by_class_name("pv-top-card-v2-section__school-name").text
+            profile.set_education(education)
+        except:
+            profile.set_education("")
         work_history = self.driver.find_elements_by_class_name("pv-position-entity")
 
         for job in work_history:
