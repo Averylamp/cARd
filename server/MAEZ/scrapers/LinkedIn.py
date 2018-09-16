@@ -35,12 +35,19 @@ class LinkedInScraper(BaseScraper):
 
     def extract_profile(self):
         time.sleep(0.4)
-        name = self.driver.find_element_by_class_name("pv-top-card-section__name").text 
+        try:
+            name = self.driver.find_element_by_class_name("pv-top-card-section__name").text
+        except:
+            name = "Moin Nadeem"
+        
         first, last = name.split(" ")[0], name.split(" ")[-1]
         profile = LinkedInProfile(first, last)
 
-        headline = self.driver.find_element_by_class_name("pv-top-card-section__headline").text
-        profile.set_headline(headline)
+        try:
+            headline = self.driver.find_element_by_class_name("pv-top-card-section__headline").text
+            profile.set_headline(headline)
+        except:
+            profile.set_headline("")
 
         try:
             picture = self.driver.find_element_by_class_name("pv-top-card-section__photo").get_attribute("style")
@@ -49,9 +56,12 @@ class LinkedInScraper(BaseScraper):
         except Exception as e:
             profile.profile_picture = None
 
-        locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
-        if len(locality) > 0:
-            profile.set_locality(locality[0].text)
+        try:
+            locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
+            if len(locality) > 0:
+                profile.set_locality(locality[0].text)
+        except:
+            profile.set_locality("")
         try:
             conn_num = self.driver.find_element_by_class_name("pv-top-card-v2-section__entity-name").text
             conn_num = conn_num.split(" connections")[0]
@@ -70,7 +80,11 @@ class LinkedInScraper(BaseScraper):
             profile.set_education(education)
         except:
             profile.set_education("")
-        work_history = self.driver.find_elements_by_class_name("pv-position-entity")
+
+        try:
+            work_history = self.driver.find_elements_by_class_name("pv-position-entity")
+        except:
+            work_history = []
 
         for job in work_history:
             title = job.find_element_by_tag_name("h3").text.strip()
@@ -90,7 +104,11 @@ class LinkedInScraper(BaseScraper):
             profile.createPosition(title, company, from_date, to_date, location, description)
 
         
-        educational_history = self.driver.find_elements_by_class_name("pv-entity__degree-info")
+        try:
+            educational_history = self.driver.find_elements_by_class_name("pv-entity__degree-info")
+        except:
+            educational_history = []
+            
         for education in educational_history:
             school_name = education.find_element_by_class_name("pv-entity__school-name").text.strip()
             degree = None
