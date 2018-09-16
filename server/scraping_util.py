@@ -35,7 +35,7 @@ def get_person(name, phone_number, email):
     response['links'] = all_urls
     response['phone_number'] = re.sub("[^0-9]", "", str(phone_number))
     response['email'] = email
-    response['profile_picture'] = picture
+    response['profile_picture'] = str(picture)
     return response
 
 def get_as_base64(url):
