@@ -12,13 +12,13 @@ def time_divide(string):
     else:
         duration = "()"
 
-    times = string.split("–")
+    times = string.split("-")
     return (times[0].strip(), times[1].strip(), duration[1:-1])
 
 
 class LinkedInScraper(BaseScraper):
     def __init__(self):
-        super().__init__()
+        super(LinkedInScraper, self).__init__()
 
     def sign_in(self):
         self.navigate("http://linkedin.com")
@@ -98,7 +98,7 @@ class LinkedInScraper(BaseScraper):
 
 class LinkedInProfile(BaseProfile):
     def __init__(self, first, last):
-        super().__init__(first, last)
+        super(LinkedInProfile, self).__init__(first, last)
         self.positions = []
         self.educationalHistory = []
         self.connections = None

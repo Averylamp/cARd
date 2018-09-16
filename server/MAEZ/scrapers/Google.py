@@ -5,7 +5,7 @@ import re
 
 class GoogleScraper(BaseScraper):
     def __init__(self):
-        super().__init__()
+        super(GoogleScraper, self).__init__()
         self.navigate("https://google.com")
         
     ## Returns dictionary of domain names and list of urls
