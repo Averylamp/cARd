@@ -149,9 +149,7 @@ class Person: NSObject,  NSCoding {
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
         self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
         self.unfilteredLinks = aDecoder.decodeObject(forKey: "unfilteredLinks") as! [String:[String]]
-        if let imageData = aDecoder.decodeObject(forKey: "profileImageURL" ) as? Data, let image = UIImage(data: imageData){
-            self.profileImageURL = image
-        }
+        self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL") as? String
         self.information = aDecoder.decodeObject(forKey: "informationKey") as? [String: JSON]
         
     }
