@@ -11,7 +11,7 @@ class ServerManager: NSObject {
     static let sharedInstance = ServerManager()
     
     
-    func analyzeCardImage(image: UIImage)-> (UIImage, Person){
+    func analyzeCardImage(image: UIImage, completion: ((UIImage, Person) -> Void)) {
         
         let person = Person(name: "Avery Lamp")
         person.phoneNumber = "0000000000"
@@ -28,7 +28,7 @@ class ServerManager: NSObject {
         
         let returnedTarget = UIImage(named: "palantir")
         
-        return (returnedTarget!, person)
+        completion(returnedTarget!, person)
     }
     
 }

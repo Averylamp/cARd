@@ -104,13 +104,6 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         configuration.maximumNumberOfTrackedImages = 1
         
         
-        
-//        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
-//        self.arReferenceImages.update(with: testImage)
-//        let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
-//        self.arReferenceImages.update(with: testImage2)
-        
-        
         configuration.trackingImages = self.arReferenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
@@ -170,17 +163,17 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     func addImageForTracking(image:UIImage){
         if let cgImage = image.cgImage, let configuration = self.configuration{
             let referenceImage = ARReferenceImage(cgImage, orientation: .up, physicalWidth: 0.089)
+            let ogLen = self.arReferenceImages.count
             self.arReferenceImages.update(with: referenceImage)
-            configuration.trackingImages  = self.arReferenceImages
-            self.statusViewController.showMessage("Tracking new business cARd")
-            print("Tracking new business card")
+            if self.arReferenceImages.count != ogLen{
+                self.resetTracking()
+                self.statusViewController.showMessage("Tracking new business cARd")
+                print("Tracking new business card")
+            }
         }
     }
     
-    
-    
     //MARK: - UIActions
-    
     
     @IBAction func scanButtonClicked(_ sender: Any) {
         let currentFrameImage = self.sceneView.snapshot()
@@ -192,15 +185,13 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             
         }
-//        Routing.sendText(number: "973-873-8225")
-//        Routing.openTwitter(urlstr: "https://www.facebook.com/ravirahman0")
-        Routing.openFacebook(profileID: "100010506616042")
-        
+        ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
+            DispatchQueue.main.async {
+                self.addImageForTracking(image: trackingImage)
+                
+                
+            }
+        }
     }
-    
-    
-    
-    
-    
     
 }
