@@ -12,6 +12,9 @@ class BusinessCardCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pictureView: UIImageView!
+    
+    @IBOutlet weak var pictureShadowView: UIView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     
@@ -21,7 +24,7 @@ class BusinessCardCell: UITableViewCell {
     
     var person: Person? = nil
     let links: [String] = ["facebook", "linkedin", "email", "phone call", "link", "link 2"]
-    var plinks: [String: [String]] = [:]
+    var plinks: [String: String] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()

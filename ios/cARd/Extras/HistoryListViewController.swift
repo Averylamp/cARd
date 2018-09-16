@@ -38,14 +38,14 @@ extension HistoryListViewController: UITableViewDataSource {
         
             let person = Person(name: "Pikachu")
             person.phoneNumber = "0000000000"
-            person.links["devpost"] = [""]
-            person.links["facebook"] = [""]
-            person.links["linkedin"] = [""]
-            person.links["phoneCall"] = [""]
-            person.links["phoneFacetime"] = [""]
-            person.links["phoneText"] = [""]
-            person.links["twitter"] = [""]
-            person.links["website"] = [""]
+            person.links["devpost"] = ""
+            person.links["facebook"] = ""
+            person.links["linkedin"] = ""
+            person.links["phoneCall"] = ""
+            person.links["phoneFacetime"] = ""
+            person.links["phoneText"] = ""
+            person.links["twitter"] = ""
+            person.links["website"] = ""
             
             cell.person = person
             return cell

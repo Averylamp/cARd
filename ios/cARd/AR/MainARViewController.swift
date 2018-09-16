@@ -173,6 +173,11 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let imageScale = currentFrameImage.size.height / self.view.frame.height
         let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: 0, y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: currentFrameImage.size.width, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
         print("Here")
+        if let croppedData = UIImagePNGRepresentation(croppedImage)?.base64EncodedData(){
+            print(croppedData)
+            
+            
+        }
         
     }
     

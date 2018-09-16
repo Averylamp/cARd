@@ -21,13 +21,22 @@ enum LinkType: String{
 }
 
 
+enum PersonStatus{
+    case Completed
+    case Unfiltered
+}
 
 class Person: NSObject,  NSCoding {
     
-    var links: [String: [String]] = [:]
+    var links: [String: String] = [:]
+    var unfilteredLinks: [String: [String]] = [:]
+    
     let name: String
     let timestamp: Date
     var phoneNumber: String?
+    
+    var personStatus:PersonStatus = .Unfiltered
+    
     
     private enum CodingKeys: CodingKey {
         case links
@@ -47,13 +56,14 @@ class Person: NSObject,  NSCoding {
         aCoder.encode(self.timestamp, forKey: "date")
         aCoder.encode(self.phoneNumber, forKey: "number")
         aCoder.encode(self.links, forKey: "links")
+        aCoder.encode(self.unfilteredLinks, forKey:"unfilteredLinks")
     }
     
     func addLink(type:LinkType, link: String){
         if var linksArray = self.links[type.rawValue] as? [String]{
             linksArray.append(link)
         }else{
-            self.links.updateValue([link], forKey: type.rawValue)
+            self.links.updateValue(link, forKey: type.rawValue)
         }
         
         
@@ -63,7 +73,8 @@ class Person: NSObject,  NSCoding {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
         self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
-        self.links = aDecoder.decodeObject(forKey: "links") as! [String: [String]]
+        self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
+        self.unfilteredLinks = aDecoder.decodeObject(forKey: "unfilteredLinks") as! [String:[String]]
     }
 
     func printDump(){
