@@ -38,7 +38,7 @@ def handle_image():
     processed_image = get_cropped_and_rectified_image(image)
     # convert to base64to return
     processed_image_string = encode_image_as_base64(processed_image)
-    return_template['cropped_image'] = processed_image_string
+    return_template['cropped_image'] = str(processed_image_string)
 
     return jsonify(return_template)
 
