@@ -1,0 +1,56 @@
+Lets Define the types of things we are scraping for here
+
+
+*Major Scraper Points*
+
+Google
+    Searches Name
+    Looks for any related links (linkedin, github, etc)
+
+LinkedIn
+    Profile,
+    Education,
+    
+Resume
+
+Devpost
+
+Github
+
+Personal Website
+
+Angellist
+
+Crunchbase
+
+Wikipedia
+
+
+
+
+
+
+
+**This is the profile we hope to generate**
+Every bit of information should have a source, with the url to the page it was found on
+
+Final Profile
+    Name
+    Email
+    Phone Number
+    Resume
+    GPA
+    Classes/Domain
+    Education
+    Languages[
+        Language: Expertise (lines of code, projects w/ language, time found writing in this language)
+    ]
+    Type of Stack[
+        What do they use to develop/ what have they used in the past
+    ]
+    Projects[
+        Project: Name, Languages, Contributers, Duration of working on it,
+    ]
+    Hackathons[
+        Name, when, prizes?, collaborators
+    ]
