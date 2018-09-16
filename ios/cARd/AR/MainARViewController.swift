@@ -105,8 +105,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
 //        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
 //        self.arReferenceImages.update(with: testImage)
-//        let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
-//        self.arReferenceImages.update(with: testImage2)
+        let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
+        self.arReferenceImages.update(with: testImage2)
         
         
         configuration.trackingImages = self.arReferenceImages
@@ -178,6 +178,9 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             
         }
+//        Routing.sendText(number: "973-873-8225")
+//        Routing.openTwitter(urlstr: "https://www.facebook.com/ravirahman0")
+        Routing.openFacebook(profileID: "100010506616042")
         
     }
     

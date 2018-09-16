@@ -61,11 +61,7 @@ class Person: NSObject,  NSCoding {
     }
     
     func addLink(type:LinkType, link: String){
-        if var linksArray = self.links[type.rawValue] as? [String]{
-            linksArray.append(link)
-        }else{
-            self.links.updateValue(link, forKey: type.rawValue)
-        }
+        self.links.updateValue(link, forKey: type.rawValue)
     }
     
     func setPhoneNumber(number: String){
@@ -81,7 +77,7 @@ class Person: NSObject,  NSCoding {
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
         self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
         self.unfilteredLinks = aDecoder.decodeObject(forKey: "unfilteredLinks") as! [String:[String]]
-        self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL" as? String)
+        self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL" ) as? String
     }
 
     func printDump(){

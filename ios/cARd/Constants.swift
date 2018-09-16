@@ -58,6 +58,70 @@ class Constants{
 }
 
 
+class Routing{
+    
+    class func openURL(url: URL){
+        DispatchQueue.main.async {
+            if  UIApplication.shared.canOpenURL(url){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
+    class func callPhoneNumber(number: String){
+        let urlstr = "tel://\(number)"
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func sendText(number: String){
+        let urlstr = "sms://\(number)"
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func sendEmail(email: String){
+        let urlstr = "mailto://\(email)"
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func openLinkedIn(urlstr: String){
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func openFacebook(profileID: String){
+        let urlstr = "fb://profile/\(profileID)"
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func openTwitter(urlstr: String){
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func openDevpost(urlstr: String){
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+    
+    class func openWebsite(urlstr: String){
+        if let url = URL(string: urlstr){
+            Routing.openURL(url: url)
+        }
+    }
+}
+
+
 
 extension UIViewController{
     
