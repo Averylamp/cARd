@@ -7,7 +7,7 @@ from MAEZ.scrapers.LinkedIn import LinkedInScraper
 
 def get_person(name, phone_number, email):
     g = GoogleScraper()
-    linkedin_urls = g.scrape_by_name(user=name)
+    all_urls = g.scrape_by_name(user=name)
 
     l = LinkedInScraper()
     l.sign_in()
