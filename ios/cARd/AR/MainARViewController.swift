@@ -129,7 +129,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         if let person = self.anchorMap[imageAnchor.referenceImage]{
             return self.allLinksNode(person:person)
         }
-        return self.allLinksNode()
+        return nil
+//        return self.allLinksNode()
     }
     
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -193,6 +194,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
                 self.resetTracking()
                 self.statusViewController.showMessage("Tracking new business cARd")
                 print("Tracking new business card")
+                NotificationCenter.default.post(name:Notification.Name(Constants.NewPersonNotification), object: nil)
             }
         }
     }
@@ -203,7 +205,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let currentFrameImage = self.sceneView.snapshot()
         let imageScale = currentFrameImage.size.height / self.view.frame.height
         let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
-        print("Here")
+        print("Fetching image")
+        
     
         ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
             DispatchQueue.main.async {
@@ -214,17 +217,17 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
 //        testUI(with: SCNNode())
     }
     
-    func allLinksNode(person: Person = Person(name: "Unknown")) -> SCNNode {
+    func allLinksNode(person: Person) -> SCNNode {
         let node = SCNNode()
         
         
         var buttonOffsets:[(CGFloat, CGFloat)] = []
-        if let imageURL = person.profileImageURL {
+        if let image = person.profileImage {
             buttonOffsets = [(-4.5, -4.5), (-1.5, -5.5), (1.5, -5.5), (4.5, -4.5), (-4.5, 4.5), (-1.5, 5.5), (1.5, 5.5), (4.5, 4.5), (6, 1.5), (6, -1.5)]
             let imageGeometry = SCNCylinder(radius: 0.02, height: 0.005)
             DispatchQueue.main.async {
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                imageView.sd_setImage(with: URL(string: imageURL), completed: nil)
+                imageView.image = image
                 imageGeometry.firstMaterial?.diffuse.contents = imageView
                 let imageNode = SCNNode(geometry: imageGeometry)
                 imageNode.position.x += -0.07
@@ -246,10 +249,14 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             let buttonGeo = SCNBox(width: size, height: 0.003, length: size, chamferRadius: 0.5 )
             
+            let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            buttonView.backgroundColor = UIColor.white
+            let buttonImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 50, height: 50))
+            buttonImage.contentMode = .scaleAspectFit
+            buttonImage.image = UIImage(named: linkType)
+            buttonView.addSubview(buttonImage)
             
-            
-            buttonGeo.firstMaterial?.diffuse.contents = UIColor.random()
-            
+            buttonGeo.firstMaterial?.diffuse.contents = buttonView
             
             
             let buttonNode = ARButtonNode(geometry: buttonGeo)
