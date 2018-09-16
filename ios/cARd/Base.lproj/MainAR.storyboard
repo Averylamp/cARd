@@ -168,7 +168,6 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAr-cU-vA6">
                                 <rect key="frame" x="20" y="315.33333333333331" width="335" height="191.33333333333331"/>
-                                <state key="normal" title="Do it"/>
                                 <connections>
                                     <action selector="scanButtonClicked:" destination="cRK-xk-l85" eventType="touchUpInside" id="hJR-ku-fhR"/>
                                 </connections>

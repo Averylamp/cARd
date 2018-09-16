@@ -58,8 +58,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             self.restartExperience()
         }
         
-        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        //sceneView.showsStatistics = true
+        //sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(rec:)))
@@ -81,8 +81,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         // Start the AR experience
         resetTracking()
         
-        sceneView.showsStatistics = true
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        //sceneView.showsStatistics = true
+        //sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
 
     }
     
