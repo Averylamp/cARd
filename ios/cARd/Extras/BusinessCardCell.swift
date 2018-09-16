@@ -19,32 +19,38 @@ class BusinessCardCell: UITableViewCell {
     @IBOutlet weak var buttonContentView: UIView!
     @IBOutlet weak var buttonStackView: UIStackView!
     
-    let links: [String] = ["Lol", "Wow", "Much Testing", "OK", "Hello", "Hi"]
+    var person: Person? = nil
+    let links: [String] = ["facebook", "linkedin", "email", "phone call", "link", "link 2"]
+    var plinks: [String: [String]] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameLabel.text = person?.name ?? "Name"
+        timestampLabel.text = person?.timestamp.description ?? "Timestamp"
+        plinks = person?.links ?? [:]
         
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
-        containerView.layer.shadowOffset = CGSize(width: 2, height: 5)
-        let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: containerView.bounds.width-10, height: containerView.bounds.height))
+        containerView.layer.shadowOffset = CGSize(width: 1, height: 3)
+        let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
         containerView.layer.masksToBounds = false
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOpacity = 0.5
         containerView.layer.shadowPath = shadowPath.cgPath
         
-        pictureView.backgroundColor = .red
+        pictureView.image = UIImage(named: "pikachu")
+        pictureView.contentMode = .scaleAspectFill
         pictureView.layer.cornerRadius = pictureView.frame.width/2
         pictureView.clipsToBounds = true
-        pictureView.layer.borderWidth = 1
-        pictureView.layer.borderColor = UIColor.darkGray.cgColor
+        pictureView.layer.borderWidth = 2
+        pictureView.layer.borderColor = UIColor.linkedinBlue.cgColor
         
         setupButtonStack()
-        buttonScrollView.contentSize = CGSize(width: links.count * 50 + (links.count - 1) * 15, height: 50)
+        buttonScrollView.contentSize = CGSize(width: links.count * 44 + (links.count - 1) * 15 + 15, height: 50)
         buttonScrollView.isScrollEnabled = true
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.widthAnchor.constraint(equalToConstant: CGFloat(links.count * 50 + (links.count - 1) * 15)).isActive = true
+        buttonStackView.widthAnchor.constraint(equalToConstant: CGFloat(links.count * 44 + (links.count - 1) * 15)).isActive = true
         buttonScrollView.showsHorizontalScrollIndicator = false
         
     }
@@ -53,32 +59,70 @@ class BusinessCardCell: UITableViewCell {
         for view in buttonStackView.arrangedSubviews {
             view.removeFromSuperview()
         }
-        for link in links {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        for key in plinks.keys {
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
             
             button.translatesAutoresizingMaskIntoConstraints = false
             
             button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 44).isActive = true
             button.setTitle("", for: .normal)
             button.backgroundColor = .white
             
             button.clipsToBounds = true
             button.layer.cornerRadius = button.frame.width/2
-            button.layer.borderColor = UIColor(red: 60, green: 60, blue: 120, alpha: 1.0).cgColor
+            button.layer.borderColor = UIColor.linkedinBlue.cgColor
             button.layer.borderWidth = 2
+            button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             
-            
+            button.imageView?.contentMode = .scaleAspectFill
+            //let image = selectIconFor(type: key)
+            //button.setImage(image, for: .normal)
+            button.tintColor = .linkedinBlue
             
             buttonStackView.addArrangedSubview(button)
         }
     }
     
     func selectIconFor(link: String) -> UIImage {
+        var image = UIImage(named: "link")
+        if link.range(of: "facebook") != nil {
+            image = UIImage(named: "facebook")
+        } else if link.range(of: "linkedin") != nil {
+            image = UIImage(named: "linkedin")
+        } else if link.range(of: "call") != nil {
+            image = UIImage(named: "phone")
+        } else if link.range(of: "mail") != nil {
+            image = UIImage(named: "email")
+        }
         
-        
-        return UIImage()
+        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage()
     }
 
+    func selectIconFor(type: LinkType) -> UIImage {
+        var image = UIImage(named: "link")
+//        switch type {
+//            case .devpost:
+//                image = UIImage(named: "link")
+//            case .facebook:
+//                image = UIImage(named: "facebook")
+//            case .linkedin:
+//                image = UIImage(named: "linkedin")
+//            case .phoneCall:
+//                image = UIImage(named: "phone")
+//            case .phoneFacetime:
+//                image = UIImage(named: "link")
+//            case .phoneText:
+//                image = UIImage(named: "phone")
+//            case .twitter:
+//                image = UIImage(named: "link")
+//            case .website:
+//                image = UIImage(named: "link")
+//        }
+//        
+        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
