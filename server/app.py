@@ -18,7 +18,7 @@ def sample(name):
 
 @app.route('/search_person', methods=['GET'])
 def handle_text():
-    return jsonify(get_person(request.args.get("name"), "9189398085", "mnadeem@dummy.mit.edu"))
+    return jsonify(get_person(request.args.get("name", "Moin Nadeem"), "9189398085", "mnadeem@dummy.mit.edu"))
 
 @app.route('/handle_image', methods=['POST', 'GET'])
 def handle_image():
