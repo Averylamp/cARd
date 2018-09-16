@@ -33,24 +33,24 @@ extension HistoryListViewController: UITableViewDelegate {
 extension HistoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Business Card", for: indexPath) as? BusinessCardCell {
-            //let person = ServerManager.sharedInstance.profiles[indexPath.row]
-            //cell.person = person
+            let person = ServerManager.sharedInstance.profiles[indexPath.row]
+            cell.person = person
 
         
-            let person = Person(name: "Pikachu")
-            person.phoneNumber = "0000000000"
-            person.links["devpost"] = "Dev"
-            person.links["facebook"] = "Fac"
-            person.links["email"] = "Em"
-            person.links["linkedin"] = "Lin"
-            person.links["phone-call"] = "PC"
-            person.links["phone-facetime"] = "PF"
-            person.links["phone-text"] = "PT"
-            person.links["twitter"] = "twit"
-            person.links["website"] = "web"
-            cell.person = person
-            
-            cell.person = person
+//            let person = Person(name: "Pikachu")
+//            person.phoneNumber = "0000000000"
+//            person.links["devpost"] = "Dev"
+//            person.links["facebook"] = "Fac"
+//            person.links["email"] = "Em"
+//            person.links["linkedin"] = "Lin"
+//            person.links["phone-call"] = "PC"
+//            person.links["phone-facetime"] = "PF"
+//            person.links["phone-text"] = "PT"
+//            person.links["twitter"] = "twit"
+//            person.links["website"] = "web"
+//            cell.person = person
+//
+//            cell.person = person
             cell.delegate = self
             cell.configure()
             return cell
@@ -60,7 +60,6 @@ extension HistoryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
         return ServerManager.sharedInstance.profiles.count
     }
     
@@ -78,8 +77,6 @@ extension HistoryListViewController: BusinessCardCellDelegate {
         }
         
         self.navigationController?.pushViewController(profileVC, animated: true)
-        
-        //performSegue(withIdentifier: "Profile", sender: self)
         
     }
 }

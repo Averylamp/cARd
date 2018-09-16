@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 enum LinkType: String{
     case twitter = "twitter"
@@ -47,8 +48,8 @@ class Person: NSObject,  NSCoding {
         case phoneNumber
     }
     
-    init(name: String) {
-        self.name = name
+    init(json: JSON) {
+        self.name = ""
         self.timestamp = Date()
         super.init()
         if name == "Unknown"{

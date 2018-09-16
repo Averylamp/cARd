@@ -129,7 +129,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         if let person = self.anchorMap[imageAnchor.referenceImage]{
             return self.allLinksNode(person:person)
         }
-        return self.allLinksNode()
+        return nil
+//        return self.allLinksNode()
     }
     
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -214,7 +215,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
 //        testUI(with: SCNNode())
     }
     
-    func allLinksNode(person: Person = Person(name: "Unknown")) -> SCNNode {
+    func allLinksNode(person: Person) -> SCNNode {
         let node = SCNNode()
         
         

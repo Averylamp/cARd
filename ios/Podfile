@@ -12,7 +12,7 @@ target 'cARd' do
   # Pods for cARd
   pod 'SDWebImage'
 
-
+  pod "SwiftyJSON"
 
   target 'cARdTests' do
     inherit! :search_paths
