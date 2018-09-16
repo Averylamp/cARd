@@ -55,17 +55,17 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             self.restartExperience()
         }
         
-        let testPerson = Person(name: "Ethan Weber")
-        testPerson.addLink(type: .linkedin, link: "asdfasdf")
-        testPerson.addLink(type: .linkedin, link: "aaaa")
-        testPerson.addLink(type: .twitter, link: "asdffffftttt")
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: testPerson, requiringSecureCoding: false)
-        UserDefaults.standard.set(data, forKey: "p1")
-
-        if let data = UserDefaults.standard.object(forKey: "p1") as? Data, let custom = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
-        {
-            custom.printDump()
-        }
+//        let testPerson = Person(name: "Ethan Weber")
+//        testPerson.addLink(type: .linkedin, link: "asdfasdf")
+//        testPerson.addLink(type: .linkedin, link: "aaaa")
+//        testPerson.addLink(type: .twitter, link: "asdffffftttt")
+//        let data = try! NSKeyedArchiver.archivedData(withRootObject: testPerson, requiringSecureCoding: false)
+//        UserDefaults.standard.set(data, forKey: "p1")
+//
+//        if let data = UserDefaults.standard.object(forKey: "p1") as? Data, let custom = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
+//        {
+//            custom.printDump()
+//        }
 
         
     }
@@ -103,8 +103,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         
         
-        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
-        self.arReferenceImages.update(with: testImage)
+//        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
+//        self.arReferenceImages.update(with: testImage)
         let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
         self.arReferenceImages.update(with: testImage2)
         
@@ -178,6 +178,9 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             
         }
+//        Routing.sendText(number: "973-873-8225")
+//        Routing.openTwitter(urlstr: "https://www.facebook.com/ravirahman0")
+        Routing.openFacebook(profileID: "100010506616042")
         
     }
     
