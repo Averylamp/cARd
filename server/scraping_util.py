@@ -35,9 +35,10 @@ def get_person(name, phone_number, email):
     if p.profile_picture is not None:
         picture = get_as_base64(p.profile_picture)
         response['profile_picture'] = picture.decode("utf-8")
+        response['profile_picture_url'] = p.profile_picture
     else:
-        picture = None
-        response['profile_picture'] = picture
+        response['profile_picture'] = None
+        response['profile_picture_url'] = None
 
     response['name'] = "{} {}".format(p.first, p.last)
     response['education_list'] = p.educationalHistory
