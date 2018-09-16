@@ -5,7 +5,13 @@ import requests
 from MAEZ.scrapers.Google import GoogleScraper
 from MAEZ.scrapers.LinkedIn import LinkedInScraper
 
+memo = {}
+
 def get_person(name, phone_number, email):
+    key = "{}{}{}".format(name, phone_number, email)
+    if key in memo:
+        return memo[key]
+
     g = GoogleScraper()
     all_urls = g.scrape_by_name(user=name)
 
@@ -36,6 +42,8 @@ def get_person(name, phone_number, email):
     response['phone_number'] = re.sub("[^0-9]", "", str(phone_number))
     response['email'] = email
     response['profile_picture'] = picture.decode("utf-8")
+
+    memo[key] = response
     return response
 
 def get_as_base64(url):
