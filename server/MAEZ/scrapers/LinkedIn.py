@@ -66,7 +66,7 @@ class LinkedInScraper(BaseScraper):
         work_history = self.driver.find_elements_by_class_name("pv-position-entity")
 
         for job in work_history:
-            title = job.find_element_by_tag_name("h3").text.encode('utf-8').strip()
+            title = job.find_element_by_tag_name("h3").text.strip()
             try:
                 company = job.find_element_by_class_name("pv-entity__secondary-title").text.strip()
             except Exception as e:
