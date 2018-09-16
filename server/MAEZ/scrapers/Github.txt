@@ -1,0 +1,97 @@
+Thinking of using GraphQL to get all data.  Current query seems to do a good job
+
+
+https://developer.github.com/v4/explorer/
+---------- QUERY ----------
+
+{
+		user(login: "moinnadeem") {
+    name
+    bio
+    bioHTML
+    avatarUrl
+    repositories(last: 100, orderBy: {field: PUSHED_AT, direction: DESC}) {
+      nodes {
+        name
+        createdAt
+        description
+        descriptionHTML
+        forkCount
+        homepageUrl
+        id
+        isPrivate
+        resourcePath
+        watchers {
+          totalCount
+        }
+        stargazers {
+          totalCount
+        }
+        nameWithOwner
+        owner {
+          id
+        }
+        parent {
+          id
+        }
+        collaborators(first: 100) {
+          nodes {
+            name
+          }
+        }
+        languages(first: 100) {
+          edges {
+            node {
+              name
+            }
+            size
+          }
+          totalSize
+        }
+        ref(qualifiedName: "master") {
+          target {
+            ... on Commit {
+              history(first: 100) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                edges {
+                  node {
+                    additions
+                    deletions
+                    changedFiles
+                    author{
+                      name
+                      email
+                    }
+                    authoredDate
+                    url
+                    messageHeadline
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+				commitComments(first:100){
+          totalCount
+          nodes{
+            commit{
+              additions
+              deletions
+              changedFiles
+              committedDate
+              url
+              author{
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -102,12 +102,13 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     var arReferenceImages: Set<ARReferenceImage> = Set<ARReferenceImage>()
+    var configuration: ARImageTrackingConfiguration?
     
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
-        
         let configuration = ARImageTrackingConfiguration()
+        self.configuration  = configuration
         configuration.maximumNumberOfTrackedImages = 1
         
         let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
@@ -115,11 +116,10 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
         self.arReferenceImages.update(with: testImage2)
         
-        
         configuration.trackingImages = self.arReferenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
-        statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
+        statusViewController.scheduleMessage("Ready to Business", inSeconds: 7.5, messageType: .contentPlacement)
     }
     
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -180,19 +180,37 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     
-    //MARK: - UIActions
+    func addImageForTracking(image:UIImage){
+        if let cgImage = image.cgImage, let configuration = self.configuration{
+            let referenceImage = ARReferenceImage(cgImage, orientation: .up, physicalWidth: 0.089)
+            let ogLen = self.arReferenceImages.count
+            self.arReferenceImages.update(with: referenceImage)
+            if self.arReferenceImages.count != ogLen{
+                self.resetTracking()
+                self.statusViewController.showMessage("Tracking new business cARd")
+                print("Tracking new business card")
+            }
+        }
+    }
     
+    //MARK: - UIActions
     
     @IBAction func scanButtonClicked(_ sender: Any) {
         let currentFrameImage = self.sceneView.snapshot()
         let imageScale = currentFrameImage.size.height / self.view.frame.height
-        let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: 0, y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: currentFrameImage.size.width, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
+        let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
         print("Here")
         if let croppedData = UIImagePNGRepresentation(croppedImage)?.base64EncodedData(), let croppedString = UIImagePNGRepresentation(croppedImage)?.base64EncodedString(){
 //            print(croppedString)
             
         }
-        
+        ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
+            DispatchQueue.main.async {
+                self.addImageForTracking(image: trackingImage)
+                
+                
+            }
+        }
         testUI(with: SCNNode())
     }
     

@@ -10,6 +10,9 @@ target 'cARd' do
   use_frameworks!
 
   # Pods for cARd
+  pod 'SDWebImage'
+
+
 
   target 'cARdTests' do
     inherit! :search_paths

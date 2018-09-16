@@ -68,6 +68,7 @@ class ContainerViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 switch state{
                 case .AR:
+                    print("Toggling AR View")
                     self.view.removeConstraint(arvcCenterX)
                     self.arvcCenterX = NSLayoutConstraint(item: arvc.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
                     self.view.addConstraint(self.arvcCenterX!)
@@ -75,8 +76,11 @@ class ContainerViewController: UIViewController {
                     self.view.removeConstraint(historyCenterX)
                     self.historyCenterX = NSLayoutConstraint(item: historyVC.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 3.0, constant: 0.0)
                     self.view.addConstraint(self.historyCenterX!)
+                    arvc.view.center.x  = self.view.center.x
+                    historyVC.view.center.x = self.view.center.x * 3
                     break
                 case .History:
+                    print("Toggling History View")
                     self.view.removeConstraint(arvcCenterX)
                     self.arvcCenterX = NSLayoutConstraint(item: arvc.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: -1.0, constant: 0.0)
                     self.view.addConstraint(self.arvcCenterX!)
@@ -84,6 +88,8 @@ class ContainerViewController: UIViewController {
                     self.view.removeConstraint(historyCenterX)
                     self.historyCenterX = NSLayoutConstraint(item: historyVC.view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
                     self.view.addConstraint(self.historyCenterX!)
+                    arvc.view.center.x  = -self.view.center.x
+                    historyVC.view.center.x = self.view.center.x
                     break
                 }
                 self.view.layoutIfNeeded()
@@ -115,10 +121,12 @@ class ContainerViewController: UIViewController {
                     toggle(state: .AR)
                 }
             }else{
-                if let arvc = self.arVC,  arvc.view.center.x < 0{
-                    toggle(state: .History)
-                }else{
-                    toggle(state: .AR)
+                if let arvc = self.arVC {
+                    if   arvc.view.center.x < 0{
+                        toggle(state: .History)
+                    }else{
+                        toggle(state: .AR)
+                    }
                 }
             }
         default:

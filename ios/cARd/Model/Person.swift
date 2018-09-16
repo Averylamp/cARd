@@ -35,9 +35,10 @@ class Person: NSObject,  NSCoding {
     let name: String
     let timestamp: Date
     var phoneNumber: String?
+    var uid: String = Constants.randomString(length: 15)
     
     var personStatus:PersonStatus = .Unfiltered
-    
+    var profileImageURL: String?
     
     private enum CodingKeys: CodingKey {
         case links
@@ -54,28 +55,33 @@ class Person: NSObject,  NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.uid, forKey:"uid")
         aCoder.encode(self.timestamp, forKey: "date")
         aCoder.encode(self.phoneNumber, forKey: "number")
         aCoder.encode(self.links, forKey: "links")
         aCoder.encode(self.unfilteredLinks, forKey:"unfilteredLinks")
+        aCoder.encode(self.profileImageURL, forKey:"profileImageURL")
     }
     
     func addLink(type:LinkType, link: String){
-        if var linksArray = self.links[type.rawValue] as? [String]{
-            linksArray.append(link)
-        }else{
-            self.links.updateValue(link, forKey: type.rawValue)
-        }
-        
-        
+        self.links.updateValue(link, forKey: type.rawValue)
+    }
+    
+    func setPhoneNumber(number: String){
+        self.links["phoneCall"] = number
+        self.links["phoneFacetime"] = number
+        self.links["phoneText"] = number
+        self.phoneNumber = number
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.uid = aDecoder.decodeObject(forKey: "uid") as! String
         self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
         self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
         self.unfilteredLinks = aDecoder.decodeObject(forKey: "unfilteredLinks") as! [String:[String]]
+        self.profileImageURL = aDecoder.decodeObject(forKey: "profileImageURL" ) as? String
     }
 
     func printDump(){
