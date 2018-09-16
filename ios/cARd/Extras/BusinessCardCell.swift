@@ -52,7 +52,6 @@ class BusinessCardCell: UITableViewCell {
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.widthAnchor.constraint(equalToConstant: CGFloat(links.count * 44 + (links.count - 1) * 15)).isActive = true
         buttonScrollView.showsHorizontalScrollIndicator = false
-        
     }
     
     func setupButtonStack() {
@@ -76,8 +75,8 @@ class BusinessCardCell: UITableViewCell {
             button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             
             button.imageView?.contentMode = .scaleAspectFill
-            //let image = selectIconFor(type: key)
-            //button.setImage(image, for: .normal)
+            let image = selectIconFor(type: key)
+            button.setImage(image, for: .normal)
             button.tintColor = .linkedinBlue
             
             buttonStackView.addArrangedSubview(button)
@@ -99,28 +98,10 @@ class BusinessCardCell: UITableViewCell {
         return image?.withRenderingMode(.alwaysTemplate) ?? UIImage()
     }
 
-    func selectIconFor(type: LinkType) -> UIImage {
-        var image = UIImage(named: "link")
-//        switch type {
-//            case .devpost:
-//                image = UIImage(named: "link")
-//            case .facebook:
-//                image = UIImage(named: "facebook")
-//            case .linkedin:
-//                image = UIImage(named: "linkedin")
-//            case .phoneCall:
-//                image = UIImage(named: "phone")
-//            case .phoneFacetime:
-//                image = UIImage(named: "link")
-//            case .phoneText:
-//                image = UIImage(named: "phone")
-//            case .twitter:
-//                image = UIImage(named: "link")
-//            case .website:
-//                image = UIImage(named: "link")
-//        }
-//        
-        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage()
+    func selectIconFor(type: String) -> UIImage {
+        let image = UIImage(named: type)
+        
+        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage(named: "pikachu") ?? UIImage()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
