@@ -13,7 +13,10 @@ def time_divide(string):
         duration = "()"
 
     times = string.split("-")
-    return (times[0].strip(), times[1].strip(), duration[1:-1])
+    try:
+        return (times[0].strip(), times[1].strip(), duration[1:-1])
+    except Exception as e:
+        return None, None, None
 
 
 class LinkedInScraper(BaseScraper):
@@ -39,9 +42,12 @@ class LinkedInScraper(BaseScraper):
         headline = self.driver.find_element_by_class_name("pv-top-card-section__headline").text
         profile.set_headline(headline)
 
-        picture = self.driver.find_element_by_class_name("pv-top-card-section__photo").get_attribute("style")
-        picture = re.search('background-image: ?url\("([^"]*)"\);', picture).group(1)
-        profile.set_profile_picture(picture)
+        try:
+            picture = self.driver.find_element_by_class_name("pv-top-card-section__photo").get_attribute("style")
+            picture = re.search('background-image: ?url\("([^"]*)"\);', picture).group(1)
+            profile.set_profile_picture(picture)
+        except Exception as e:
+            pass
 
         locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
         if len(locality) > 0:
@@ -60,21 +66,21 @@ class LinkedInScraper(BaseScraper):
         work_history = self.driver.find_elements_by_class_name("pv-position-entity")
 
         for job in work_history:
+            title = job.find_element_by_tag_name("h3").text.encode('utf-8').strip()
             try:
-                title = job.find_element_by_tag_name("h3").text.encode('utf-8').strip()
                 company = job.find_element_by_class_name("pv-entity__secondary-title").text.strip()
-                times = job.find_element_by_class_name("pv-entity__date-range").find_elements_by_tag_name("span")[1].text.strip()
-                from_date, to_date, duration = time_divide(times)
-                location = ""
-                if len(job.find_elements_by_class_name("pv-entity__location")) > 0:
-                    location = job.find_element_by_class_name("pv-entity__location").find_elements_by_tag_name("span")[1].text.strip()
-                try:
-                    description = job.find_element_by_class_name("pv-entity__description").text
-                except:
-                    description = None
-                profile.createPosition(title, company, from_date, to_date, location, description)
             except Exception as e:
-                pass
+                company = "Multiple Positions" 
+            times = job.find_element_by_class_name("pv-entity__date-range").find_elements_by_tag_name("span")[1].text.strip()
+            from_date, to_date, duration = time_divide(times)
+            location = ""
+            if len(job.find_elements_by_class_name("pv-entity__location")) > 0:
+                location = job.find_element_by_class_name("pv-entity__location").find_elements_by_tag_name("span")[1].text.strip()
+            try:
+                description = job.find_element_by_class_name("pv-entity__description").text
+            except:
+                description = None
+            profile.createPosition(title, company, from_date, to_date, location, description)
 
         
         educational_history = self.driver.find_elements_by_class_name("pv-entity__degree-info")
