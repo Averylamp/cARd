@@ -205,7 +205,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let currentFrameImage = self.sceneView.snapshot()
         let imageScale = currentFrameImage.size.height / self.view.frame.height
         let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
-        print("Here")
+        print("Fetching image")
+        
     
         ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
             DispatchQueue.main.async {

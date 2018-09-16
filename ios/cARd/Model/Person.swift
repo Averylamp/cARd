@@ -41,7 +41,7 @@ class Person: NSObject,  NSCoding {
     var uid: String = Constants.randomString(length: 15)
     
     var personStatus:PersonStatus = .Unfiltered
-    var profileImage: UIImage?
+    var profileImageURL: String?
     
     private enum CodingKeys: CodingKey {
         case links
@@ -97,10 +97,8 @@ class Person: NSObject,  NSCoding {
                 self.setPhoneNumber(number: phoneNumber)
             }
             
-            if let profilePicture = json["profile_picture"].string, let dataDecoded = Data(base64Encoded: profilePicture, options: .ignoreUnknownCharacters), let decodedImage = UIImage(data: dataDecoded){
-                self.profileImage = decodedImage
-            }else{
-                self.profileImage = UIImage(named: "pikachu")
+            if let profilePicture = json["profile_picture"].string{
+                self.profileImageURL = profilePicture
             }
             
         }
@@ -128,7 +126,7 @@ class Person: NSObject,  NSCoding {
         aCoder.encode(self.phoneNumber, forKey: "number")
         aCoder.encode(self.links, forKey: "links")
         aCoder.encode(self.unfilteredLinks, forKey:"unfilteredLinks")
-        aCoder.encode(self.profileImage, forKey:"profileImageURL")
+        aCoder.encode(self.profileImageURL, forKey:"profileImageURL")
         aCoder.encode(self.information, forKey:"informationKey")
     }
     
@@ -152,7 +150,7 @@ class Person: NSObject,  NSCoding {
         self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
         self.unfilteredLinks = aDecoder.decodeObject(forKey: "unfilteredLinks") as! [String:[String]]
         if let imageData = aDecoder.decodeObject(forKey: "profileImageURL" ) as? Data, let image = UIImage(data: imageData){
-            self.profileImage = image
+            self.profileImageURL = image
         }
         self.information = aDecoder.decodeObject(forKey: "informationKey") as? [String: JSON]
         
