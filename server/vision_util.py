@@ -7,10 +7,12 @@ import json
 from api_keys import GOOGLE_API_KEY
 import base64
 import requests
+import os
 
 def save_image(image):
-    cv2.imwrite("recently_saved.png", image)
-
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    path_to_save_to = os.path.join(current_path, "images/recently_saved.png")
+    cv2.imwrite(path_to_save_to, image)
 
 def get_search_string(image):
     """Returns the data from the card to be searched in Google."""
@@ -164,5 +166,5 @@ def get_cropped_and_rectified_image(image):
     h, status = cv2.findHomography(np.array(final_points), np.array(pts_dst))
 
     im_dst = cv2.warpPerspective(image, h, (pixel_width, pixel_height))
-                
+
     return im_dst

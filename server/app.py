@@ -28,7 +28,7 @@ def handle_image():
     elif request.method == 'POST':
         pass
     
-    return "hi"
+    return "Bad request."
 
 if __name__ == '__main__':
     # set debug and threaded modes
