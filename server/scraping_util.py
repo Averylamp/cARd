@@ -1,7 +1,8 @@
+import re
+
 from MAEZ.scrapers.Google import GoogleScraper
 from MAEZ.scrapers.LinkedIn import LinkedInScraper
 
-@memoize
 def get_person(name, phone_number, email):
     g = GoogleScraper()
     linkedin_urls = g.scrape_by_name(user=name)
@@ -24,6 +25,6 @@ def get_person(name, phone_number, email):
     response['position_str'] = "Previously worked at {}.".format(s)
     response['description'] = p.headline
     response['links'] = all_urls
-    response['phone_number'] = phone_number
+    response['phone_number'] = re.sub("[^0-9]", phone_number)
     response['email'] = email
     return response

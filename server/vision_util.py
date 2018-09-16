@@ -8,16 +8,50 @@ from api_keys import GOOGLE_API_KEY
 import base64
 import requests
 import os
+import re
+
+def image_from_base64_string(base64_string):
+    encoded_data = base64_string
+    nparr = np.fromstring(encoded_data.decode('base64'), np.uint8)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    return img
+
+def get_default_image():
+    """Returns a default image."""
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    image_filename = os.path.join(dir_path, "images/card_0.png")
+    image = cv2.imread(image_filename)
+    return image
+
+def get_phone_from_string(my_string):
+    """Get the phone number."""
+    r = re.search(r'\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})', my_string)
+    if not r:
+        return ""
+    phone = r.group(0)
+    return phone
+
+def get_email_from_string(my_string):
+    """Get the email address."""
+    r = re.search(r'[\w\.-]+@[\w\.-]+', my_string)
+    if not r:
+        return ""
+    email = r.group(0)
+    return email
 
 def save_image(image):
     current_path = os.path.dirname(os.path.abspath(__file__))
     path_to_save_to = os.path.join(current_path, "images/recently_saved.png")
     cv2.imwrite(path_to_save_to, image)
 
-def get_search_string(image):
-    """Returns the data from the card to be searched in Google."""
+def encode_image_as_base64(image):
     retval, buffer = cv2.imencode('.jpg', image)
     image_as_text = base64.b64encode(buffer)
+    return image_as_text
+
+def get_text_info_from_image(image):
+    """Returns the raw string from the vision API"""
+    image_as_text = encode_image_as_base64(image)
 
     url = "https://vision.googleapis.com/v1/images:annotate"
     data = {
@@ -50,6 +84,15 @@ def get_search_string(image):
     response = requests.post(url, data=json.dumps(data), headers=headers, params=querystring)
     response_json = response.json()
     ascii_string = str(response_json['responses'][0]['textAnnotations'][0]['description'])
+    return ascii_string
+
+def get_search_string(image):
+    """
+    Returns the data from the card to be searched in Google.
+    Returns of form: google_search_string, raw_string
+    """
+    
+    ascii_string = get_text_info_from_image(image)
     words = ascii_string.split("\n")
     used_words = []
     # remove dashes (-)
@@ -72,7 +115,7 @@ def get_search_string(image):
         request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
         current_output = requests.get(request_string).text
 
-    return current_string
+    return str(current_string), str(ascii_string)
 
 def get_cropped_and_rectified_image(image):
     edges = cv2.Canny(image,100,200,apertureSize=3)
