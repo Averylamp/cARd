@@ -19,9 +19,9 @@ class BusinessCardCell: UITableViewCell {
     @IBOutlet weak var buttonContentView: UIView!
     @IBOutlet weak var buttonStackView: UIStackView!
     
-    let person: Person? = nil
+    var person: Person? = nil
     let links: [String] = ["facebook", "linkedin", "email", "phone call", "link", "link 2"]
-    var plinks: [LinkType: String] = [:]
+    var plinks: [String: [String]] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,8 +76,8 @@ class BusinessCardCell: UITableViewCell {
             button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             
             button.imageView?.contentMode = .scaleAspectFill
-            let image = selectIconFor(type: key)
-            button.setImage(image, for: .normal)
+            //let image = selectIconFor(type: key)
+            //button.setImage(image, for: .normal)
             button.tintColor = .linkedinBlue
             
             buttonStackView.addArrangedSubview(button)
@@ -101,25 +101,25 @@ class BusinessCardCell: UITableViewCell {
 
     func selectIconFor(type: LinkType) -> UIImage {
         var image = UIImage(named: "link")
-        switch type {
-            case .devpost:
-                image = UIImage(named: "link")
-            case .facebook:
-                image = UIImage(named: "facebook")
-            case .linkedin:
-                image = UIImage(named: "linkedin")
-            case .phoneCall:
-                image = UIImage(named: "phone")
-            case .phoneFacetime:
-                image = UIImage(named: "link")
-            case .phoneText:
-                image = UIImage(named: "phone")
-            case .twitter:
-                image = UIImage(named: "link")
-            case .website:
-                image = UIImage(named: "link")
-        }
-        
+//        switch type {
+//            case .devpost:
+//                image = UIImage(named: "link")
+//            case .facebook:
+//                image = UIImage(named: "facebook")
+//            case .linkedin:
+//                image = UIImage(named: "linkedin")
+//            case .phoneCall:
+//                image = UIImage(named: "phone")
+//            case .phoneFacetime:
+//                image = UIImage(named: "link")
+//            case .phoneText:
+//                image = UIImage(named: "phone")
+//            case .twitter:
+//                image = UIImage(named: "link")
+//            case .website:
+//                image = UIImage(named: "link")
+//        }
+//        
         return image?.withRenderingMode(.alwaysTemplate) ?? UIImage()
     }
     
