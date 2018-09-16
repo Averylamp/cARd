@@ -83,16 +83,18 @@ class ServerManager {
     
     func searchByName(name: String, completion: @escaping ((Person) -> Void)){
         
-        if let url = URL(string: "http://turtle.mit.edu:5000/search_person?name=\(name)"){
+        if let url = URL(string: "http://turtle.mit.edu:5000/search_person/\(name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"){
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 if (error != nil) {
                     print(error)
                 } else {
                     guard let data = data, let json = try? JSON(data: data) else{return}
-                    let person = Person(json: json)
-                    self.addPerson(person: person)
-                    
-                    completion(person)
+                    DispatchQueue.main.async {
+                        let person = Person(json: json)
+                        self.addPerson(person: person)
+                    NotificationCenter.default.post(name:Notification.Name(Constants.NewPersonNotification), object: nil)
+                        completion(person)
+                    }
                 }
             }
             

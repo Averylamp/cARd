@@ -55,6 +55,7 @@ class Person: NSObject,  NSCoding {
         self.timestamp = Date()
         super.init()
         
+        
         if let info =  json["information"].dictionary{
             
             self.information = info
