@@ -1,4 +1,5 @@
 import base64
+import time
 import re
 import requests
 
@@ -26,11 +27,18 @@ def get_person(name, phone_number, email):
         raise Exception("LinkedIn URLs not found!")
 
     l.driver.save_screenshot("test")
+    time.sleep(0.5)
     p = l.extract_profile()
+
+    response = {}
 
     if p.profile_picture is not None:
         picture = get_as_base64(p.profile_picture)
-    response = {}
+        response['profile_picture'] = picture.decode("utf-8")
+    else:
+        picture = None
+        response['profile_picture'] = picture
+
     response['name'] = "{} {}".format(p.first, p.last)
     response['education_list'] = p.educationalHistory
     response['currentEducation'] = p.education
@@ -41,9 +49,9 @@ def get_person(name, phone_number, email):
     response['links'] = all_urls
     response['phone_number'] = re.sub("[^0-9]", "", str(phone_number))
     response['email'] = email
-    response['profile_picture'] = picture.decode("utf-8")
 
     memo[key] = response
+    print(response)
     return response
 
 def get_as_base64(url):

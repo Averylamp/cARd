@@ -9,6 +9,17 @@ app = Flask(__name__)
 def hello():
     return 'Hello, World!'
 
+@app.route('/sample/<name>')
+def sample(name):
+    with open('images/{}.txt'.format(name), 'r') as myfile:
+        data=myfile.read().replace('\n', '')
+    my_dict = json.loads(data)
+    return jsonify(my_dict)
+
+@app.route('/search_person', methods=['GET'])
+def handle_text():
+    return jsonify(get_person(request.args.get("name"), "9189398085", "mnadeem@dummy.mit.edu"))
+
 @app.route('/handle_image', methods=['POST', 'GET'])
 def handle_image():
     # convert to the image format

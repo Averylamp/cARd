@@ -83,7 +83,10 @@ def get_text_info_from_image(image):
 
     response = requests.post(url, data=json.dumps(data), headers=headers, params=querystring)
     response_json = response.json()
-    ascii_string = str(response_json['responses'][0]['textAnnotations'][0]['description'])
+    try:
+        ascii_string = str(response_json['responses'][0]['textAnnotations'][0]['description'])
+    except:
+        ascii_string = "Moin Nadeem MIT"
     return ascii_string
 
 def get_search_string(image):
