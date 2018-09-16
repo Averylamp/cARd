@@ -12,6 +12,7 @@ enum LinkType: String{
     case twitter = "twitter"
     case facebook = "facebook"
     case devpost = "devpost"
+    case email = "email"
     case linkedin = "linkedin"
     case phoneCall = "phone-call"
     case phoneText = "phone-text"
