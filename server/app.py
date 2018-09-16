@@ -9,9 +9,9 @@ app = Flask(__name__)
 def hello():
     return 'Hello, World!'
 
-@app.route('/sample')
-def sample():
-    with open('images/card_0.txt', 'r') as myfile:
+@app.route('/sample/<name>')
+def sample(name):
+    with open('images/{}.txt'.format(name), 'r') as myfile:
         data=myfile.read().replace('\n', '')
     my_dict = json.loads(data)
     return jsonify(my_dict)
