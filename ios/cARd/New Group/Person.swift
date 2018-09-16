@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LinkTypes: String{
+enum LinkType: String{
     case twitter = "twitter"
     case facebook = "facebook"
     case devpost = "devpost"
@@ -23,7 +23,7 @@ enum LinkTypes: String{
 
 class Person: NSObject, NSCoding {
     
-    var links: [LinkTypes: String] = [:]
+    var links: [LinkType: String] = [:]
     let name: String
     let timestamp: Date
     var phoneNumber: String?
@@ -46,7 +46,7 @@ class Person: NSObject, NSCoding {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
         self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
-        self.links = aDecoder.decodeObject(forKey: "links") as! [LinkTypes: String]
+        self.links = aDecoder.decodeObject(forKey: "links") as! [LinkType: String]
     }
     
     func printDump(){

@@ -35,6 +35,19 @@ extension HistoryListViewController: UITableViewDelegate {
 extension HistoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Business Card", for: indexPath)
+        
+        let person = Person(name: "Pikachu")
+        person.phoneNumber = "0000000000"
+        person.links[.devpost] = ""
+        person.links[.facebook] = ""
+        person.links[.linkedin] = ""
+        person.links[.phoneCall] = ""
+        person.links[.phoneFacetime] = ""
+        person.links[.phoneText] = ""
+        person.links[.twitter] = ""
+        person.links[.website] = ""
+
+        
         return cell
     }
     
