@@ -79,16 +79,18 @@ class GoogleScraper(BaseScraper):
         for elem in input_elem:
             if elem.get_attribute("title") == "Search":
                 search_elem = elem
-        search_elem.send_keys(user + " filetype:pdf")
+        search_elem.send_keys(user + " linkedin")
         time.sleep(0.25)
         search_elem.send_keys(Keys.ENTER)
+
+        urls_to_explore['linkedin'] = []
         for r in self.driver.find_elements_by_xpath("//div[@class='rc']//h3//a"):
-            if "resume" in r.text.lower():
-                if "resume" in urls_to_explore:
-                        urls_to_explore["resume"].add(r.get_attribute("href"))
+            if "linkedin" in r.text.lower():
+                if "linkedin" in urls_to_explore:
+                        urls_to_explore["linkedin"].append(r.get_attribute("href"))
                 else:
-                    urls_to_explore["resume"] = set()
-                    urls_to_explore["resume"].add(r.get_attribute("href"))
+                    urls_to_explore["linkedin"] = set()
+                    urls_to_explore["linkedin"].append(r.get_attribute("href"))
         print("URLs to explore:", urls_to_explore)
         return urls_to_explore
         

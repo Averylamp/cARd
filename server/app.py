@@ -38,10 +38,10 @@ def handle_image():
     processed_image = get_cropped_and_rectified_image(image)
     # convert to base64to return
     processed_image_string = encode_image_as_base64(processed_image)
-    return_template['cropped_image'] = processed_image_string
+    return_template['cropped_image'] = processed_image_string.decode("utf-8")
 
     return jsonify(return_template)
 
 if __name__ == '__main__':
     # set debug and threaded modes
-    app.run(debug=True, threaded=True)
+    app.run(host="0.0.0.0", threaded=True)

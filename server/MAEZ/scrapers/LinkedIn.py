@@ -40,7 +40,7 @@ class LinkedInScraper(BaseScraper):
         profile.set_headline(headline)
 
         picture = self.driver.find_element_by_class_name("pv-top-card-section__photo").get_attribute("style")
-        picture = re.sub('background-image: url\("([^"])*"\);', picture)
+        picture = re.search('background-image: ?url\("([^"]*)"\);', picture).group(1)
         profile.set_profile_picture(picture)
 
         locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
@@ -108,7 +108,7 @@ class LinkedInProfile(BaseProfile):
         self.connections = None
         self.headline = None
         self.industry = None
-        self.profilePicture = None
+        self.profile_picture = None
         
     def __repr__(self):
         result = ""
@@ -130,7 +130,7 @@ class LinkedInProfile(BaseProfile):
         return result
     
     def set_profile_picture(self, url):
-        self.profilePicture = url
+        self.profile_picture = url
 
     def set_headline(self, headline):
         self.headline = headline

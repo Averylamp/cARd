@@ -36,6 +36,21 @@ extension HistoryListViewController: UITableViewDataSource {
             let person = ServerManager.sharedInstance.profiles[indexPath.row]
             cell.person = person
 
+        
+            /*let person = Person(name: "Pikachu")
+            person.phoneNumber = "0000000000"
+            person.links["devpost"] = ""
+            person.links["facebook"] = ""
+            person.links["email"] = ""
+            person.links["linkedin"] = ""
+            person.links["phone-call"] = ""
+            person.links["phone-facetime"] = ""
+            person.links["phone-text"] = ""
+            person.links["twitter"] = ""
+            person.links["website"] = ""
+            
+            cell.person = person*/
+            cell.configure()
             return cell
         }
         
