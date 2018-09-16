@@ -21,10 +21,6 @@ class GoogleScraper(BaseScraper):
             return dict()
         search_elem.send_keys(user + " ")
         time.sleep(0.5)
-        search_elem.send_keys(Keys.DOWN)
-        time.sleep(0.5)
-        search_elem.send_keys(Keys.UP)
-        time.sleep(0.25)
         search_elem.send_keys(Keys.ENTER)
         
         suggestions = self.driver.find_elements_by_class_name("sbqs_c")
@@ -41,7 +37,7 @@ class GoogleScraper(BaseScraper):
             found_items = False
             for r in self.driver.find_elements_by_xpath("//div[@class='rc']//h3//a"):
                 for url in urls:
-                    if url in r.text.lower():
+                    if url in r.text.lower() and (url != "linkedin" or "linkedin.com/in/" in r.text.lower()):
                         found_items = True
                         if url in urls_to_explore:
                             urls_to_explore[url].append(r.get_attribute("href"))
