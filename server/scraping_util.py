@@ -9,7 +9,7 @@ memo = {}
 
 def get_person(name, phone_number, email):
     key = "{}{}{}".format(name, phone_number, email)
-    if key is in memo:
+    if key in memo:
         return memo[key]
 
     g = GoogleScraper()
