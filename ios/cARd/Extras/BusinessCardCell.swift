@@ -94,6 +94,10 @@ class BusinessCardCell: UITableViewCell {
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.widthAnchor.constraint(equalToConstant: CGFloat(plinks.count * 44 + (plinks.count - 1) * 15)).isActive = true
         buttonScrollView.showsHorizontalScrollIndicator = false
+        
+        if let view = buttonStackView.arrangedSubviews.first {
+            buttonScrollView.scrollRectToVisible(view.frame, animated: false)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

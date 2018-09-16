@@ -26,7 +26,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var scanCardButton: UIButton!
     
-    
+    var cardNode: SCNNode?
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -55,6 +55,9 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             self.restartExperience()
         }
         
+        sceneView.showsStatistics = true
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+
         let testPerson = Person(name: "Ethan Weber")
         testPerson.addLink(type: .linkedin, link: "asdfasdf")
         testPerson.addLink(type: .linkedin, link: "aaaa")
@@ -67,7 +70,9 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             custom.printDump()
         }
 
-        
+        if let cardNode = cardNode {
+            self.testUI(with: cardNode)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,6 +83,10 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         // Start the AR experience
         resetTracking()
+        
+        sceneView.showsStatistics = true
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,8 +109,6 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         let configuration = ARImageTrackingConfiguration()
         configuration.maximumNumberOfTrackedImages = 1
-        
-        
         
         let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
         self.arReferenceImages.update(with: testImage)
@@ -141,6 +148,14 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
              */
             planeNode.runAction(self.imageHighlightAction)
             
+            if self.cardNode == nil {
+                self.cardNode = node
+            }
+            
+            if let cardNode = self.cardNode {
+                self.testUI(with: node)
+            }
+            
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
         }
@@ -176,14 +191,43 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         if let croppedData = UIImagePNGRepresentation(croppedImage)?.base64EncodedData(), let croppedString = UIImagePNGRepresentation(croppedImage)?.base64EncodedString(){
 //            print(croppedString)
             
-            
         }
         
+        testUI(with: SCNNode())
     }
     
-    
-    
-    
-    
-    
+    func testUI(with cardNode: SCNNode) {
+        let node = SCNNode()
+        
+        cardNode.addChildNode(node)
+        let backNode = SCNNode()
+        let box = SCNBox(width: 0.1, height: 0.01, length: 0.1, chamferRadius: 0)
+        box.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.6)
+        backNode.geometry = box
+//        node.position.y -= 1
+//        node.position.z += 1
+//        node.position.x += 1
+//        //backNode.rotation.z += -Float.pi / 4
+//        backNode.rotation.w += Float.pi / 2
+        node.addChildNode(backNode)
+        
+        let billboardConstraint = SCNBillboardConstraint()
+        billboardConstraint.freeAxes = SCNBillboardAxis.Y
+        
+        node.constraints?.append(billboardConstraint)
+        
+        let buttons = [1,2,3,4,5,6,7,8]
+        for button in buttons {
+            let buttonGeo = SCNBox(width: 0.01, height: 0.01, length: 0.01, chamferRadius: 10)
+            buttonGeo.firstMaterial?.diffuse.contents = UIColor.random()
+            let buttonNode = SCNNode(geometry: buttonGeo)
+            buttonNode.position = backNode.position
+            buttonNode.opacity = 0.5
+            //buttonNode.position.y += backNode.scale.y / 2
+            buttonNode.position.y += 0.02
+            buttonNode.position.x -= Float(Double(buttons.count + 1) / 75.0 / 2)
+            buttonNode.position.x += (Float(button) / 75)
+            node.addChildNode(buttonNode)
+        }
+    }
 }
