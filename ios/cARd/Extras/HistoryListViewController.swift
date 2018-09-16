@@ -25,10 +25,7 @@ class HistoryListViewController: UIViewController {
             self.cardTableView.reloadData()
         }
     }
-    
-    
-    
-    
+   
     
     @IBAction func searchButtonClicked(_ sender: Any) {
         if let name = nameTextField.text, name.count > 0{
@@ -39,6 +36,10 @@ class HistoryListViewController: UIViewController {
     }
     
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cardTableView.reloadData()
+    }
 }
 
 extension HistoryListViewController: UITableViewDelegate {
@@ -55,7 +56,7 @@ extension HistoryListViewController: UITableViewDataSource {
             cell.person = person
 
         
-//            let person = Person(name: "Pikachu")
+//            let person = Person(json: [:])
 //            person.phoneNumber = "0000000000"
 //            person.links["devpost"] = "Dev"
 //            person.links["facebook"] = "Fac"
@@ -67,8 +68,8 @@ extension HistoryListViewController: UITableViewDataSource {
 //            person.links["twitter"] = "twit"
 //            person.links["website"] = "web"
 //            cell.person = person
-//
-//            cell.person = person
+
+            cell.person = person
             cell.delegate = self
             cell.configure()
             return cell
@@ -78,6 +79,7 @@ extension HistoryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return 5
         return ServerManager.sharedInstance.profiles.count
     }
     

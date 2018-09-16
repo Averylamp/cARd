@@ -37,12 +37,12 @@ class ProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if let imageView = profileImageView {
-            imageView.sd_setImage(with: URL(string: "https://assets.vg247.com/current/2016/08/pikachu_surprise.jpg"), completed: nil)
+            imageView.image = person?.profileImage
         }
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         profileImageView.clipsToBounds = true
-        profileImageView.layer.borderWidth = 2
+        profileImageView.layer.borderWidth = 4
         profileImageView.layer.borderColor = UIColor.linkedinBlue.cgColor
         
         backButton.addTarget(self, action: #selector(ProfileViewController.back), for: .touchUpInside)
@@ -63,12 +63,23 @@ class ProfileViewController: UIViewController {
     }
     
     func configure() {
-        if let person = person {
+        if let person = person, let information = person.information {
             nameLabel.text = person.name
-            descriptionLabel.text = "Desc"
-            currentPositionLabel.text = "Job"
-            schoolLabel.text = "SchooL"
-            degreeLabel.text = "Deg"
+            if let desc = information["description"]?.stringValue {
+                descriptionLabel.text = desc
+            }
+            if let jobs = information["positions_list"]?.arrayValue, let current_job = jobs.first?.dictionary, let title = current_job["title"]?.stringValue {
+                currentPositionLabel.text = title
+            }
+            if let schools = information["education_list"]?.arrayValue, let school = schools.first?.dictionary {
+                if let schoolName = school["school_name"]?.stringValue {
+                    schoolLabel.text = schoolName
+                }
+                if let degreeName = school["degree_name"]?.stringValue {
+                    degreeLabel.text = degreeName
+                }
+            }
+            
         }
     }
     
