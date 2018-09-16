@@ -28,9 +28,15 @@ def get_person(name, phone_number, email):
     l.driver.save_screenshot("test")
     p = l.extract_profile()
 
+    response = {}
+
     if p.profile_picture is not None:
         picture = get_as_base64(p.profile_picture)
-    response = {}
+        response['profile_picture'] = picture.decode("utf-8")
+    else:
+        picture = None
+        response['profile_picture'] = picture
+
     response['name'] = "{} {}".format(p.first, p.last)
     response['education_list'] = p.educationalHistory
     response['currentEducation'] = p.education
@@ -41,7 +47,6 @@ def get_person(name, phone_number, email):
     response['links'] = all_urls
     response['phone_number'] = re.sub("[^0-9]", "", str(phone_number))
     response['email'] = email
-    response['profile_picture'] = picture.decode("utf-8")
 
     memo[key] = response
     return response

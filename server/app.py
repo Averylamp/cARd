@@ -16,6 +16,10 @@ def sample(name):
     my_dict = json.loads(data)
     return jsonify(my_dict)
 
+@app.route('/search_person', methods=['GET'])
+def handle_text():
+    return jsonify(get_person(request.args.get("name"), "9189398085", "mnadeem@dummy.mit.edu"))
+
 @app.route('/handle_image', methods=['POST', 'GET'])
 def handle_image():
     # convert to the image format
@@ -46,7 +50,7 @@ def handle_image():
     # convert to base64to return
     processed_image_string = encode_image_as_base64(processed_image)
     return_template['cropped_image'] = processed_image_string.decode("utf-8")
-    
+
     return jsonify(return_template)
 
 if __name__ == '__main__':
