@@ -17,7 +17,8 @@ class ServerManager {
     
     private init() {
         print("Shared Instance initialized")
-        if let profiles = UserDefaults.standard.object(forKey: "allProfiles") as? [Person]{
+        
+        if let profiles = UserDefaults.standard.array(forKey: "allProfiles") as? [Person]{
             self.profiles = profiles
         }else{
             self.profiles = []
@@ -30,7 +31,6 @@ class ServerManager {
         if let data = try? NSKeyedArchiver.archivedData(withRootObject: self.profiles, requiringSecureCoding: false){
             UserDefaults.standard.set(data, forKey: "allProfiles")
         }
-        
     }
     
 
@@ -61,9 +61,9 @@ class ServerManager {
                     if let croppedImage = json["cropped_image"].string, let decodedData = Data(base64Encoded: croppedImage){
                         let decodedimage:UIImage = UIImage(data: decodedData)!
                         let person = Person(json: json)
+                        self.addPerson(person: person)
                         completion(decodedimage, person)
                     }
-                    print(json)
                     
                     
                 }

@@ -12,6 +12,8 @@ import VideoToolbox
 
 class Constants{
     
+    static let NewPersonNotification = "PersonNotification"
+    
     static let selectionHapticFeedback = UISelectionFeedbackGenerator()
     static let notificationHapticFeedback = UINotificationFeedbackGenerator()
     

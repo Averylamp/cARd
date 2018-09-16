@@ -20,6 +20,9 @@ class HistoryListViewController: UIViewController {
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
+        NotificationCenter.default.addObserver(forName: Notification.Name(Constants.NewPersonNotification), object: nil, queue: nil) { (notification) in
+            self.cardTableView.reloadData()
+        }
     }
 }
 
