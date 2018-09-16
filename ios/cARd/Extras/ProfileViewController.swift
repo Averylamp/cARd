@@ -11,12 +11,20 @@ import SDWebImage
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var currentPositionsView: UIView!
+    @IBOutlet weak var currentPositionLabel: UILabel!
+    
     @IBOutlet weak var educationView: UIView!
+    @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var degreeLabel: UILabel!
+    
     @IBOutlet weak var linkView: UIView!
     @IBOutlet weak var linkTableView: UITableView!
     
@@ -41,6 +49,27 @@ class ProfileViewController: UIViewController {
         
         linkTableView.delegate = self
         linkTableView.dataSource = self
+        linkTableView.isScrollEnabled = false
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        linkTableView.translatesAutoresizingMaskIntoConstraints = false
+       // linkTableView.heightAnchor.constraint(equalToConstant: CGFloat((person?.links.keys.count ?? 0) * 64))
+        
+        scrollView.contentSize = contentView.frame.size
+        configure()
+    }
+    
+    func configure() {
+        if let person = person {
+            nameLabel.text = person.name
+            descriptionLabel.text = "Desc"
+            currentPositionLabel.text = "Job"
+            schoolLabel.text = "SchooL"
+            degreeLabel.text = "Deg"
+        }
     }
     
     
@@ -75,8 +104,9 @@ extension ProfileViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Link Cell") as? LinkTableViewCell, let person = person {
             for (n, key) in person.links.keys.enumerated() {
                 if n == indexPath.item {
-                    cell.linkText = person.links[key] ?? ""
+                    cell.linkText = person.links[key] ?? "Hello"
                     cell.linkType = key
+                    cell.updateLabel()
                 }
             }
             

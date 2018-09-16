@@ -33,22 +33,22 @@ extension HistoryListViewController: UITableViewDelegate {
 extension HistoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Business Card", for: indexPath) as? BusinessCardCell {
-            let person = ServerManager.sharedInstance.profiles[indexPath.row]
-            cell.person = person
+            //let person = ServerManager.sharedInstance.profiles[indexPath.row]
+            //cell.person = person
 
         
-            /*let person = Person(name: "Pikachu")
+            let person = Person(name: "Pikachu")
             person.phoneNumber = "0000000000"
-            person.links["devpost"] = ""
-            person.links["facebook"] = ""
-            person.links["email"] = ""
-            person.links["linkedin"] = ""
-            person.links["phone-call"] = ""
-            person.links["phone-facetime"] = ""
-            person.links["phone-text"] = ""
-            person.links["twitter"] = ""
-            person.links["website"] = ""
-            cell.person = person*/
+            person.links["devpost"] = "Dev"
+            person.links["facebook"] = "Fac"
+            person.links["email"] = "Em"
+            person.links["linkedin"] = "Lin"
+            person.links["phone-call"] = "PC"
+            person.links["phone-facetime"] = "PF"
+            person.links["phone-text"] = "PT"
+            person.links["twitter"] = "twit"
+            person.links["website"] = "web"
+            cell.person = person
             
             cell.person = person
             cell.delegate = self
@@ -60,6 +60,7 @@ extension HistoryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
         return ServerManager.sharedInstance.profiles.count
     }
     

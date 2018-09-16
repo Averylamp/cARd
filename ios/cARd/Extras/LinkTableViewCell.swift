@@ -32,6 +32,7 @@ class LinkTableViewCell: UITableViewCell {
         linkButton.imageView?.contentMode = .scaleAspectFit
         let image = selectIconFor(type: linkType)
         linkButton.setImage(image, for: .normal)
+        linkButton.setTitle("", for: .normal)
         linkButton.tintColor = .linkedinBlue
     }
 
@@ -39,6 +40,13 @@ class LinkTableViewCell: UITableViewCell {
         let image = UIImage(named: type)
         
         return image?.withRenderingMode(.alwaysTemplate) ?? UIImage(named: "pikachu") ?? UIImage()
+    }
+    
+    func updateLabel() {
+        linkLabel.text = linkText
+        let image = selectIconFor(type: linkType)
+        linkButton.setImage(image, for: .normal)
+        linkButton.setTitle("", for: .normal)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
