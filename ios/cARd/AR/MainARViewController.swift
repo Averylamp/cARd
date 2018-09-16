@@ -248,10 +248,14 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             
             let buttonGeo = SCNBox(width: size, height: 0.003, length: size, chamferRadius: 0.5 )
             
+            let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            buttonView.backgroundColor = UIColor.white
+            let buttonImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 50, height: 50))
+            buttonImage.contentMode = .scaleAspectFit
+            buttonImage.image = UIImage(named: linkType)
+            buttonView.addSubview(buttonImage)
             
-            
-            buttonGeo.firstMaterial?.diffuse.contents = UIColor.random()
-            
+            buttonGeo.firstMaterial?.diffuse.contents = buttonView
             
             
             let buttonNode = ARButtonNode(geometry: buttonGeo)
