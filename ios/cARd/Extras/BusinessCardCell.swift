@@ -80,7 +80,7 @@ class BusinessCardCell: UITableViewCell {
         
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
-        containerView.layer.shadowOffset = CGSize(width: 1, height: 3)
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 3)
         let shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
         containerView.layer.masksToBounds = false
         containerView.layer.shadowColor = UIColor.black.cgColor
