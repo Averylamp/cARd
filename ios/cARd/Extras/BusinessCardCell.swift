@@ -43,7 +43,7 @@ class BusinessCardCell: UITableViewCell {
             view.removeFromSuperview()
         }
         
-        for key in plinks.keys {
+        for (key, value ) in plinks {
             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
             
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +58,8 @@ class BusinessCardCell: UITableViewCell {
             button.layer.borderColor = UIColor.linkedinBlue.cgColor
             button.layer.borderWidth = 2
             button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            
+            
             
             button.imageView?.contentMode = .scaleAspectFit
             let image = selectIconFor(type: key)
