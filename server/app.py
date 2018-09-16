@@ -43,16 +43,19 @@ def handle_image():
     phone = str(get_phone_from_string(raw_string))
     email = str(get_email_from_string(raw_string))
 
-    person_data = get_person(google_search_string, phone, email)
-    return_template['information'] = person_data
-
-    print(person_data)
+    try:
+        person_data = get_person(google_search_string, phone, email)
+        return_template['information'] = person_data
+        print(person_data)
+    except Exception as e:
+        print(e)
+        print("No linkedin found")
 
     processed_image = get_cropped_and_rectified_image(image)
     # convert to base64to return
     processed_image_string = encode_image_as_base64(processed_image)
     return_template['cropped_image'] = processed_image_string.decode("utf-8")
-    
+    print(return_template)    
     print("Success")
 
     return jsonify(return_template)
