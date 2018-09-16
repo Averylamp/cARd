@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var currentPositionsView: UIView!
     @IBOutlet weak var educationView: UIView!
     @IBOutlet weak var linkView: UIView!
+    @IBOutlet weak var linkTableView: UITableView!
     
     @IBOutlet weak var backButton: UIButton!
     
@@ -37,6 +38,9 @@ class ProfileViewController: UIViewController {
         profileImageView.layer.borderColor = UIColor.linkedinBlue.cgColor
         
         backButton.addTarget(self, action: #selector(ProfileViewController.back), for: .touchUpInside)
+        
+        linkTableView.delegate = self
+        linkTableView.dataSource = self
     }
     
     
@@ -54,4 +58,34 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
+}
+
+extension ProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return person?.links.keys.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Link Cell") as? LinkTableViewCell, let person = person {
+            for (n, key) in person.links.keys.enumerated() {
+                if n == indexPath.item {
+                    cell.linkText = person.links[key] ?? ""
+                    cell.linkType = key
+                }
+            }
+            
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 }

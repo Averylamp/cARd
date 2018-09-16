@@ -473,6 +473,7 @@
                         <outlet property="currentPositionsView" destination="hM3-D9-kld" id="HHz-Vr-jGp"/>
                         <outlet property="descriptionLabel" destination="NS2-gD-rva" id="hdq-IC-i2g"/>
                         <outlet property="educationView" destination="jGT-fH-fWf" id="tP0-s4-LXO"/>
+                        <outlet property="linkTableView" destination="tEU-sg-bF5" id="gHb-5Q-G4Z"/>
                         <outlet property="linkView" destination="MQ2-eR-xUZ" id="Evs-dL-wvC"/>
                         <outlet property="nameLabel" destination="cgN-JS-Uoo" id="0ij-Wh-wYD"/>
                         <outlet property="profileImageView" destination="IFc-Gv-Z8f" id="DpN-in-o7a"/>
