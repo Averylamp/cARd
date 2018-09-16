@@ -49,6 +49,7 @@ extension HistoryListViewController: UITableViewDataSource {
             person.links["website"] = ""
             
             cell.person = person
+            cell.delegate = self
             cell.configure()
             return cell
         }
@@ -62,5 +63,20 @@ extension HistoryListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+}
+
+extension HistoryListViewController: BusinessCardCellDelegate {
+    func didSelect(profile: Person) {
+        let storyboard = UIStoryboard(name: "Extras", bundle: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "Profile VC")
+        if let pvc = profileVC as? ProfileViewController {
+            pvc.person = profile
+        }
+        
+        self.navigationController?.pushViewController(profileVC, animated: true)
+        
+        //performSegue(withIdentifier: "Profile", sender: self)
+        
     }
 }

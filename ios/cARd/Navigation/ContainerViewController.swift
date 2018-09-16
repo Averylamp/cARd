@@ -20,7 +20,7 @@ class ContainerViewController: UIViewController {
     
     var arVC : MainARViewController?
     var arvcCenterX: NSLayoutConstraint?
-    var historyVC: HistoryListViewController?
+    var historyVC: UINavigationController?
     var historyCenterX: NSLayoutConstraint?
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class ContainerViewController: UIViewController {
                 ])
         }
         
-        if let historyListVC = UIStoryboard(name: "Extras", bundle: nil).instantiateViewController(withIdentifier: "HistoryListVC") as? HistoryListViewController{
+        if let historyListVC = UIStoryboard(name: "Extras", bundle: nil).instantiateViewController(withIdentifier: "ProfileNavVC") as? UINavigationController, let profileVC = UIStoryboard(name: "Extras", bundle: nil).instantiateViewController(withIdentifier: "HistoryListVC") as? HistoryListViewController{ historyListVC.setViewControllers([profileVC], animated: false) 
             self.historyVC = historyListVC
             self.addChildViewController(historyListVC)
             self.view.addSubview(historyListVC.view)

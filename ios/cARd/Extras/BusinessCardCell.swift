@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol BusinessCardCellDelegate: AnyObject {
+    func didSelect(profile: Person)
+}
+
+
 class BusinessCardCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
@@ -24,6 +29,8 @@ class BusinessCardCell: UITableViewCell {
     
     var person: Person? = nil
     var plinks: [String: String] = [:]
+    
+    weak var delegate: BusinessCardCellDelegate? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -98,6 +105,15 @@ class BusinessCardCell: UITableViewCell {
         if let view = buttonStackView.arrangedSubviews.first {
             buttonScrollView.scrollRectToVisible(view.frame, animated: false)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(BusinessCardCell.didSelectProfile))
+        self.containerView.addGestureRecognizer(tap)
+    }
+    
+    @objc func didSelectProfile() {
+        if let person = person {
+            delegate?.didSelect(profile: person)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -106,7 +122,6 @@ class BusinessCardCell: UITableViewCell {
         // Configure the view for the selected state
         
     }
-
 }
 
 extension BusinessCardCell: UIScrollViewDelegate {
