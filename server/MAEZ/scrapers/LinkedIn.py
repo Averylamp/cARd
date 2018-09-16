@@ -115,7 +115,6 @@ class LinkedInProfile(BaseProfile):
         self.headline = None
         self.industry = None
         self.profile_picture = None
-        self.profile_picture = url
         
     def __repr__(self):
         result = ""
