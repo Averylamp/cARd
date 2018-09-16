@@ -231,6 +231,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
                 imageGeometry.firstMaterial?.diffuse.contents = imageView
                 let imageNode = SCNNode(geometry: imageGeometry)
                 imageNode.position.x += -0.07
+                imageNode.eulerAngles.y = .pi / 2.0
                 node.addChildNode(imageNode)
             }
         }else{
@@ -265,9 +266,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             buttonNode.person = person
             
             buttonNode.opacity = 0.0
-//            buttonNode.position.y += 0.01
-//            buttonNode.position.x += offset.0 / 100
-//            buttonNode.position.z += offset.1 / 100
+
             SCNAction.moveBy(x: offset.0 / 100, y: 0.01, z: offset.1 / 100, duration: 0.6)
             let imageMoveAction:SCNAction = .sequence([
                 .wait(duration: 0.2 * Double(count)),
