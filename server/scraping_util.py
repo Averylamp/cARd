@@ -11,7 +11,14 @@ def get_person(name, phone_number, email):
 
     l = LinkedInScraper()
     l.sign_in()
-    l.navigate(all_urls['linkedin'][0])
+    print("URLs:", all_urls)
+    print("LinkedIn URLs:", all_urls['linkedin'])
+
+    if 'linkedin' in all_urls:
+        l.navigate(all_urls['linkedin'][0])
+    else:
+        raise Exception("LinkedIn URLs not found!")
+
     l.driver.save_screenshot("test")
     p = l.extract_profile()
 
