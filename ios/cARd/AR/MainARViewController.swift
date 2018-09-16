@@ -9,6 +9,7 @@
 import UIKit
 import ARKit
 import SceneKit
+import SDWebImage
 
 enum ScanState {
     case Scanning
@@ -27,6 +28,8 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var scanCardButton: UIButton!
     
     var cardNode: SCNNode?
+    
+    var anchorMap: [ARReferenceImage: Person] = [:]
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -57,22 +60,16 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(rec:)))
+        
+        //Add recognizer to sceneview
+        sceneView.addGestureRecognizer(tap)
 
-        let testPerson = Person(name: "Ethan Weber")
-        testPerson.addLink(type: .linkedin, link: "asdfasdf")
-        testPerson.addLink(type: .linkedin, link: "aaaa")
-        testPerson.addLink(type: .twitter, link: "asdffffftttt")
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: testPerson, requiringSecureCoding: false)
-        UserDefaults.standard.set(data, forKey: "p1")
-
-        if let data = UserDefaults.standard.object(forKey: "p1") as? Data, let custom = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
-        {
-            custom.printDump()
-        }
-
-        if let cardNode = cardNode {
-            self.testUI(with: cardNode)
-        }
+//        if let cardNode = cardNode {
+//            self.testUI(with: cardNode)
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,18 +105,31 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         let configuration = ARImageTrackingConfiguration()
+        configuration.isAutoFocusEnabled = true
         self.configuration  = configuration
         configuration.maximumNumberOfTrackedImages = 1
         
         let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
         self.arReferenceImages.update(with: testImage)
+        
         let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
         self.arReferenceImages.update(with: testImage2)
         
+        
         configuration.trackingImages = self.arReferenceImages
+        
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Ready to Business", inSeconds: 7.5, messageType: .contentPlacement)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        guard let imageAnchor = anchor as? ARImageAnchor else { return nil}
+        print(imageAnchor.referenceImage.name)
+        if let person = self.anchorMap[imageAnchor.referenceImage]{
+            return self.allLinksNode(person:person)
+        }
+        return self.allLinksNode()
     }
     
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -148,14 +158,6 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
              */
             planeNode.runAction(self.imageHighlightAction)
             
-            if self.cardNode == nil {
-                self.cardNode = node
-            }
-            
-            if let cardNode = self.cardNode {
-                self.testUI(with: node)
-            }
-            
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
         }
@@ -180,11 +182,13 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     
-    func addImageForTracking(image:UIImage){
+    func addImageForTracking(image:UIImage, person: Person){
         if let cgImage = image.cgImage, let configuration = self.configuration{
             let referenceImage = ARReferenceImage(cgImage, orientation: .up, physicalWidth: 0.089)
+            referenceImage.name  = person.uid
             let ogLen = self.arReferenceImages.count
             self.arReferenceImages.update(with: referenceImage)
+            self.anchorMap.updateValue(person, forKey: referenceImage)
             if self.arReferenceImages.count != ogLen{
                 self.resetTracking()
                 self.statusViewController.showMessage("Tracking new business cARd")
@@ -200,52 +204,120 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         let imageScale = currentFrameImage.size.height / self.view.frame.height
         let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
         print("Here")
-        if let croppedData = UIImagePNGRepresentation(croppedImage)?.base64EncodedData(), let croppedString = UIImagePNGRepresentation(croppedImage)?.base64EncodedString(){
-//            print(croppedString)
-            
-        }
+    
         ServerManager.sharedInstance.analyzeCardImage(image: croppedImage) { (trackingImage, person) in
             DispatchQueue.main.async {
-                self.addImageForTracking(image: trackingImage)
-                
+                self.addImageForTracking(image: trackingImage, person: person)
                 
             }
         }
-        testUI(with: SCNNode())
+//        testUI(with: SCNNode())
     }
     
-    func testUI(with cardNode: SCNNode) {
+    func allLinksNode(person: Person = Person(name: "Unknown")) -> SCNNode {
         let node = SCNNode()
         
-        cardNode.addChildNode(node)
-        let backNode = SCNNode()
-        let box = SCNBox(width: 0.1, height: 0.01, length: 0.1, chamferRadius: 0)
-        box.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.6)
-        backNode.geometry = box
-//        node.position.y -= 1
-//        node.position.z += 1
-//        node.position.x += 1
-//        //backNode.rotation.z += -Float.pi / 4
-//        backNode.rotation.w += Float.pi / 2
-        node.addChildNode(backNode)
         
-        let billboardConstraint = SCNBillboardConstraint()
-        billboardConstraint.freeAxes = SCNBillboardAxis.Y
+        var buttonOffsets:[(CGFloat, CGFloat)] = []
+        if let imageURL = person.profileImageURL {
+            buttonOffsets = [(-4.5, -4.5), (-1.5, -5.5), (1.5, -5.5), (4.5, -4.5), (-4.5, 4.5), (-1.5, 5.5), (1.5, 5.5), (4.5, 4.5), (6, 1.5), (6, -1.5)]
+            let imageGeometry = SCNCylinder(radius: 0.02, height: 0.005)
+            DispatchQueue.main.async {
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                imageView.sd_setImage(with: URL(string: imageURL), completed: nil)
+                imageGeometry.firstMaterial?.diffuse.contents = imageView
+                let imageNode = SCNNode(geometry: imageGeometry)
+                imageNode.position.x += -0.07
+                node.addChildNode(imageNode)
+            }
+        }else{
+            buttonOffsets = [(-4.5, -4.5), (-1.5, -5.5), (1.5, -5.5), (4.5, -4.5), (-4.5, 4.5), (-1.5, 5.5), (1.5, 5.5), (4.5, 4.5), (-6, 0), (6, 0)]
+        }
         
-        node.constraints?.append(billboardConstraint)
         
-        let buttons = [1,2,3,4,5,6,7,8]
-        for button in buttons {
-            let buttonGeo = SCNBox(width: 0.01, height: 0.01, length: 0.01, chamferRadius: 10)
+        var count = 0
+        let size:CGFloat = 0.018
+        print("Adding \(person.links.count) buttons")
+        for (linkType, link) in person.links {
+            print("Link \(linkType): \(link)")
+            
+            let offset = buttonOffsets[count % buttonOffsets.count]
+            count += 1
+            
+            let buttonGeo = SCNBox(width: size, height: 0.003, length: size, chamferRadius: 0.5 )
+            
+            
+            
             buttonGeo.firstMaterial?.diffuse.contents = UIColor.random()
-            let buttonNode = SCNNode(geometry: buttonGeo)
-            buttonNode.position = backNode.position
-            buttonNode.opacity = 0.5
-            //buttonNode.position.y += backNode.scale.y / 2
-            buttonNode.position.y += 0.02
-            buttonNode.position.x -= Float(Double(buttons.count + 1) / 75.0 / 2)
-            buttonNode.position.x += (Float(button) / 75)
+            
+            
+            
+            let buttonNode = ARButtonNode(geometry: buttonGeo)
+            buttonNode.setup(person: person, linkType: linkType, link: link)
+            buttonNode.person = person
+            
+            
+            buttonNode.opacity = 0.0
+//            buttonNode.position.y += 0.01
+//            buttonNode.position.x += offset.0 / 100
+//            buttonNode.position.z += offset.1 / 100
+            SCNAction.moveBy(x: offset.0 / 100, y: 0.01, z: offset.1 / 100, duration: 0.6)
+            let imageMoveAction:SCNAction = .sequence([
+                .wait(duration: 0.2 * Double(count)),
+                .group([
+                    .fadeOpacity(to: 1.0, duration: 0.25),
+                    .moveBy(x: offset.0 / 100, y: 0.01, z: offset.1 / 100, duration: 0.4)
+                    ])
+                ])
+            buttonNode.runAction(imageMoveAction)
             node.addChildNode(buttonNode)
         }
+        return node
     }
+    
+    @objc func handleTap(rec: UITapGestureRecognizer){
+        if rec.state == .ended {
+            let location: CGPoint = rec.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if !hits.isEmpty, let tappedNode = hits.first?.node, let buttonNode = tappedNode as? ARButtonNode{
+                
+            }
+        }
+    }
+    
+    
+    func openLink(linkType: String, link: String){
+//        switch linkType {
+//        case LinkType.email.rawValue:
+//            Routing.openURL(url: <#T##URL#>)
+//        default:
+//            <#code#>
+//        }
+    }
+    
+    
+}
+
+class ARButtonNode: SCNNode{
+    
+    var person: Person?
+    var linkType: String?
+    var linkString: String?
+    
+    init(geometry: SCNGeometry) {
+        super.init()
+        self.geometry = geometry
+    }
+    
+    func setup(person: Person, linkType: String, link: String){
+        self.person = person
+        self.linkType = linkType
+        self.linkString = link
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented222")
+    }
+
+    
 }

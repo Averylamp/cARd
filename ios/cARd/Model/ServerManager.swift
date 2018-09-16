@@ -32,25 +32,49 @@ class ServerManager {
         
     }
     
+
     
     func analyzeCardImage(image: UIImage, completion: ((UIImage, Person) -> Void)) {
-        
-        let person = Person(name: "Avery Lamp")
-        person.phoneNumber = "0000000000"
-        person.links["devpost"] = ""
-        person.links["facebook"] = "https://www.facebook.com/avery.lamp"
-        person.links["linkedin"] = "https://www.linkedin.com/in/averylamp/"
-        person.setPhoneNumber(number: "973-873-8225")
-        person.links["twitter"] = ""
-        person.links["website"] = ""
-        
-        let imageURL = "https://media.licdn.com/dms/image/C5603AQGYLlhGhN_JNA/profile-displayphoto-shrink_800_800/0?e=1542844800&v=beta&t=kaDq5HhrULTZ8jUiv8BTELnpdyMH6cmArRIazcZ7KtM"
-        person.profileImageURL = imageURL
-        
-        
-        let returnedTarget = UIImage(named: "palantir")
-        
-        completion(returnedTarget!, person)
+        if let base64Image = UIImagePNGRepresentation(image)?.base64EncodedString(){
+            let request = NSMutableURLRequest(url: NSURL(string: "http://turtle.mit.edu:5000/handle_image")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 45.0)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.timeoutInterval = 50
+            let postData = ["image_data": base64Image]
+            print(postData)
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: postData, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+            } catch let error {
+                print(error.localizedDescription)
+            }
+
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                } else {
+                    guard let data = data else{return}
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse)
+                    let responseData = String(data: data, encoding: String.Encoding.utf8)
+                    print(responseData)
+                    
+                }
+            })
+            
+            dataTask.resume()
+            
+            
+            
+            let returnedTarget = UIImage(named: "palantir")
+            
+//            completion(returnedTarget!, person)
+            
+        }
     }
     
 }
