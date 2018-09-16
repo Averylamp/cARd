@@ -1,4 +1,5 @@
 import base64
+import time
 import re
 import requests
 
@@ -26,6 +27,7 @@ def get_person(name, phone_number, email):
         raise Exception("LinkedIn URLs not found!")
 
     l.driver.save_screenshot("test")
+    time.sleep(0.5)
     p = l.extract_profile()
 
     response = {}
