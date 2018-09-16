@@ -51,6 +51,18 @@ class Person: NSObject,  NSCoding {
         self.name = name
         self.timestamp = Date()
         super.init()
+        if name == "Unknown"{
+            links["devpost"] = "http://devpost.com/averylamp"
+            links["facebook"] = "https://www.facebook.com/avery.lamp"
+            links["linkedin"] = "https://www.linkedin.com/in/averylamp/"
+            links["twitter"] = "https://twitter.com/averylamp"
+            links["website"] = "http://averylamp.me/"
+            setPhoneNumber(number: "9738738225")
+            
+            let imageURL = "https://media.licdn.com/dms/image/C4E03AQHu5yxY8L5vfw/profile-displayphoto-shrink_200_200/0?e=1542844800&v=beta&t=ivEJzB1az6jDHlIq3J0N2PjON2lG0hLJPSeLXTzz2_8"
+            profileImageURL = imageURL
+            
+        }
     }
     
     func encode(with aCoder: NSCoder) {
