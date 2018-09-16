@@ -36,8 +36,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        if let imageView = profileImageView {
-            imageView.sd_setImage(with: URL(string: "https://assets.vg247.com/current/2016/08/pikachu_surprise.jpg"), completed: nil)
+        print(person?.information?.keys)
+        if let imageView = profileImageView, let imageString = person?.information?["profile_picture"]?.stringValue {
+            let url = URL(string: imageString)
+            imageView.sd_setImage(with: url, completed: nil)
         }
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
@@ -63,12 +65,23 @@ class ProfileViewController: UIViewController {
     }
     
     func configure() {
-        if let person = person {
+        if let person = person, let information = person.information {
             nameLabel.text = person.name
-            descriptionLabel.text = "Desc"
-            currentPositionLabel.text = "Job"
-            schoolLabel.text = "SchooL"
-            degreeLabel.text = "Deg"
+            if let desc = information["description"]?.stringValue {
+                descriptionLabel.text = desc
+            }
+            if let jobs = information["positions_list"]?.arrayValue {
+                currentPositionLabel.text = jobs.first?.stringValue ?? "Job"
+            }
+            if let schools = information["education_list"]?.arrayValue, let school = schools.first?.dictionary {
+                if let schoolName = school["school_name"]?.stringValue {
+                    schoolLabel.text = schoolName
+                }
+                if let degreeName = school["degree_name"]?.stringValue {
+                    degreeLabel.text = degreeName
+                }
+            }
+            
         }
     }
     
