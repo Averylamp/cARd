@@ -7,10 +7,12 @@ import json
 from api_keys import GOOGLE_API_KEY
 import base64
 import requests
+import os
 
 def save_image(image):
-    cv2.imwrite("recently_saved.png", image)
-
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    path_to_save_to = os.path.join(current_path, "images/recently_saved.png")
+    cv2.imwrite(path_to_save_to, image)
 
 def get_search_string(image):
     """Returns the data from the card to be searched in Google."""
@@ -47,7 +49,7 @@ def get_search_string(image):
 
     response = requests.post(url, data=json.dumps(data), headers=headers, params=querystring)
     response_json = response.json()
-    ascii_string = response_json['responses'][0]['textAnnotations'][0]['description'].encode("utf8")
+    ascii_string = str(response_json['responses'][0]['textAnnotations'][0]['description'])
     words = ascii_string.split("\n")
     used_words = []
     # remove dashes (-)
@@ -60,17 +62,17 @@ def get_search_string(image):
             continue
         used_words.append(word)
 
-    current_string = "linkedin " + " ".join(used_words)
+    current_string = " ".join(used_words) + " linkedin"
     request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
     current_output = requests.get(request_string).text
     while len(used_words) > 2 and current_output.find("did not match any documents.") >= 0:
         # remove an element off the used_words list
         used_words.pop()
-        current_string = "linkedin " + " ".join(used_words)
+        current_string = " ".join(used_words) + " linkedin"
         request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
         current_output = requests.get(request_string).text
 
-    return request_string
+    return current_string
 
 def get_cropped_and_rectified_image(image):
     edges = cv2.Canny(image,100,200,apertureSize=3)
@@ -164,5 +166,5 @@ def get_cropped_and_rectified_image(image):
     h, status = cv2.findHomography(np.array(final_points), np.array(pts_dst))
 
     im_dst = cv2.warpPerspective(image, h, (pixel_width, pixel_height))
-                
+
     return im_dst
