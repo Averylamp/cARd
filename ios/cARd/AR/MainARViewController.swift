@@ -93,26 +93,28 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     
     
     var arReferenceImages: Set<ARReferenceImage> = Set<ARReferenceImage>()
+    var configuration: ARImageTrackingConfiguration?
     
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
         let configuration = ARImageTrackingConfiguration()
+        self.configuration  = configuration
         configuration.maximumNumberOfTrackedImages = 1
         
         
         
 //        let testImage = ARReferenceImage(UIImage(named: "jibo")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
 //        self.arReferenceImages.update(with: testImage)
-        let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
-        self.arReferenceImages.update(with: testImage2)
+//        let testImage2 = ARReferenceImage(UIImage(named: "palantir")!.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(0.089))
+//        self.arReferenceImages.update(with: testImage2)
         
         
         configuration.trackingImages = self.arReferenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
-        statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
+        statusViewController.scheduleMessage("Ready to Business", inSeconds: 7.5, messageType: .contentPlacement)
     }
     
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -161,6 +163,18 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
             .fadeOut(duration: 0.5),
             .removeFromParentNode()
             ])
+    }
+    
+    
+    
+    func addImageForTracking(image:UIImage){
+        if let cgImage = image.cgImage, let configuration = self.configuration{
+            let referenceImage = ARReferenceImage(cgImage, orientation: .up, physicalWidth: 0.089)
+            self.arReferenceImages.update(with: referenceImage)
+            configuration.trackingImages  = self.arReferenceImages
+            self.statusViewController.showMessage("Tracking new business cARd")
+            print("Tracking new business card")
+        }
     }
     
     

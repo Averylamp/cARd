@@ -34,6 +34,7 @@ class Person: NSObject,  NSCoding {
     let name: String
     let timestamp: Date
     var phoneNumber: String?
+    var uid: String = Constants.randomString(length: 15)
     
     var personStatus:PersonStatus = .Unfiltered
     var profileImageURL: String?
@@ -53,6 +54,7 @@ class Person: NSObject,  NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.uid, forKey:"uid")
         aCoder.encode(self.timestamp, forKey: "date")
         aCoder.encode(self.phoneNumber, forKey: "number")
         aCoder.encode(self.links, forKey: "links")
@@ -73,6 +75,7 @@ class Person: NSObject,  NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.uid = aDecoder.decodeObject(forKey: "uid") as! String
         self.timestamp = aDecoder.decodeObject(forKey: "date") as! Date
         self.phoneNumber = aDecoder.decodeObject(forKey: "number") as? String
         self.links = aDecoder.decodeObject(forKey: "links") as! [String: String]
