@@ -222,12 +222,12 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
         
         
         var buttonOffsets:[(CGFloat, CGFloat)] = []
-        if let imageURLStr = person.profileImageURL , let imageURL = URL(string:imageURLStr){
+        if let image = person.profileImage {
             buttonOffsets = [(-4.5, -4.5), (-1.5, -5.5), (1.5, -5.5), (4.5, -4.5), (-4.5, 4.5), (-1.5, 5.5), (1.5, 5.5), (4.5, 4.5), (6, 1.5), (6, -1.5)]
             let imageGeometry = SCNCylinder(radius: 0.02, height: 0.005)
             DispatchQueue.main.async {
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                imageView.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "pikachu"))
+                imageView.image = image
                 imageGeometry.firstMaterial?.diffuse.contents = imageView
                 let imageNode = SCNNode(geometry: imageGeometry)
                 imageNode.position.x += -0.07
