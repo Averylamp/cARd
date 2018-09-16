@@ -47,7 +47,7 @@ def get_search_string(image):
 
     response = requests.post(url, data=json.dumps(data), headers=headers, params=querystring)
     response_json = response.json()
-    ascii_string = response_json['responses'][0]['textAnnotations'][0]['description'].encode("utf8")
+    ascii_string = str(response_json['responses'][0]['textAnnotations'][0]['description'])
     words = ascii_string.split("\n")
     used_words = []
     # remove dashes (-)
@@ -60,13 +60,13 @@ def get_search_string(image):
             continue
         used_words.append(word)
 
-    current_string = "linkedin " + " ".join(used_words)
+    current_string = " ".join(used_words) + " linkedin"
     request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
     current_output = requests.get(request_string).text
     while len(used_words) > 2 and current_output.find("did not match any documents.") >= 0:
         # remove an element off the used_words list
         used_words.pop()
-        current_string = "linkedin " + " ".join(used_words)
+        current_string = " ".join(used_words) + " linkedin"
         request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
         current_output = requests.get(request_string).text
 
