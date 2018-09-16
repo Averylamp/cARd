@@ -36,15 +36,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        print(person?.information?.keys)
-        if let imageView = profileImageView, let imageString = person?.information?["profile_picture"]?.stringValue {
-            let url = URL(string: imageString)
-            imageView.sd_setImage(with: url, completed: nil)
+        if let imageView = profileImageView {
+            imageView.image = person?.profileImage
         }
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.frame.width/2
         profileImageView.clipsToBounds = true
-        profileImageView.layer.borderWidth = 2
+        profileImageView.layer.borderWidth = 4
         profileImageView.layer.borderColor = UIColor.linkedinBlue.cgColor
         
         backButton.addTarget(self, action: #selector(ProfileViewController.back), for: .touchUpInside)
@@ -70,8 +68,8 @@ class ProfileViewController: UIViewController {
             if let desc = information["description"]?.stringValue {
                 descriptionLabel.text = desc
             }
-            if let jobs = information["positions_list"]?.arrayValue {
-                currentPositionLabel.text = jobs.first?.stringValue ?? "Job"
+            if let jobs = information["positions_list"]?.arrayValue, let current_job = jobs.first?.dictionary, let title = current_job["title"]?.stringValue {
+                currentPositionLabel.text = title
             }
             if let schools = information["education_list"]?.arrayValue, let school = schools.first?.dictionary {
                 if let schoolName = school["school_name"]?.stringValue {
