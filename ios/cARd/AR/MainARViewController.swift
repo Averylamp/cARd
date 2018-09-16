@@ -98,7 +98,6 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
-        
         let configuration = ARImageTrackingConfiguration()
         self.configuration  = configuration
         configuration.maximumNumberOfTrackedImages = 1
@@ -178,7 +177,7 @@ class MainARViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func scanButtonClicked(_ sender: Any) {
         let currentFrameImage = self.sceneView.snapshot()
         let imageScale = currentFrameImage.size.height / self.view.frame.height
-        let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: 0, y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: currentFrameImage.size.width, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
+        let croppedImage = currentFrameImage.cropImage(toRect: CGRect(x: imageScale * (self.cardTargetImageView.frame.origin.x - 20), y: imageScale * (self.cardTargetImageView.frame.origin.y - 20), width: (self.cardTargetImageView.frame.width + 40) * imageScale, height: (self.cardTargetImageView.frame.height + 40) * imageScale))
         print("Here")
         if let croppedData = UIImagePNGRepresentation(croppedImage)?.base64EncodedData(), let croppedString = UIImagePNGRepresentation(croppedImage)?.base64EncodedString(){
 //            print(croppedString)
