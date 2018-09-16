@@ -55,9 +55,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVz-7T-x7S">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IVX-Xf-40R">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCo-ds-qp6" userLabel="Messages label">
@@ -167,7 +167,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAr-cU-vA6">
-                                <rect key="frame" x="-13.666666666666657" y="296" width="402.33333333333326" height="230"/>
+                                <rect key="frame" x="20" y="315.33333333333331" width="335" height="191.33333333333331"/>
                                 <state key="normal" title="Do it"/>
                                 <connections>
                                     <action selector="scanButtonClicked:" destination="cRK-xk-l85" eventType="touchUpInside" id="hJR-ku-fhR"/>
@@ -181,7 +181,7 @@
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="T02-Ee-y9X" secondAttribute="trailing" id="EoL-wP-e6i"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="top" secondItem="BZX-55-uEL" secondAttribute="top" id="EyQ-1f-skH"/>
                             <constraint firstItem="Mab-ha-IhP" firstAttribute="leading" secondItem="BZX-55-uEL" secondAttribute="leading" id="MKB-0a-TP8"/>
-                            <constraint firstItem="RAr-cU-vA6" firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="width" multiplier="1.2" id="N3Z-Bm-rRb"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="width" secondItem="uhL-q5-O4F" secondAttribute="width" id="N3Z-Bm-rRb"/>
                             <constraint firstItem="T02-Ee-y9X" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="Nuz-qt-Dma"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="leading" secondItem="YGe-Hv-dBb" secondAttribute="leading" id="PCS-b0-Msw"/>
                             <constraint firstAttribute="bottom" secondItem="T02-Ee-y9X" secondAttribute="bottom" id="Rui-lP-is5"/>
@@ -191,7 +191,7 @@
                             <constraint firstItem="RAr-cU-vA6" firstAttribute="centerX" secondItem="uhL-q5-O4F" secondAttribute="centerX" id="XnX-2b-50B"/>
                             <constraint firstItem="YGe-Hv-dBb" firstAttribute="trailing" secondItem="lZX-kX-eDH" secondAttribute="trailing" id="f4L-v5-Nyv"/>
                             <constraint firstItem="lZX-kX-eDH" firstAttribute="top" secondItem="YGe-Hv-dBb" secondAttribute="top" id="fjx-2Q-9Zw"/>
-                            <constraint firstItem="RAr-cU-vA6" firstAttribute="height" secondItem="uhL-q5-O4F" secondAttribute="height" multiplier="1.2" id="u3x-lc-EuE"/>
+                            <constraint firstItem="RAr-cU-vA6" firstAttribute="height" secondItem="uhL-q5-O4F" secondAttribute="height" id="u3x-lc-EuE"/>
                             <constraint firstItem="RAr-cU-vA6" firstAttribute="centerY" secondItem="uhL-q5-O4F" secondAttribute="centerY" id="vSn-0p-DHZ"/>
                             <constraint firstItem="uhL-q5-O4F" firstAttribute="centerX" secondItem="YGe-Hv-dBb" secondAttribute="centerX" id="www-40-akI"/>
                         </constraints>
