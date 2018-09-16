@@ -47,7 +47,7 @@ class LinkedInScraper(BaseScraper):
             picture = re.search('background-image: ?url\("([^"]*)"\);', picture).group(1)
             profile.set_profile_picture(picture)
         except Exception as e:
-            pass
+            profile.set_profile_picture(None)
 
         locality = self.driver.find_elements_by_class_name("pv-top-card-section__location")
         if len(locality) > 0:
@@ -115,6 +115,7 @@ class LinkedInProfile(BaseProfile):
         self.headline = None
         self.industry = None
         self.profile_picture = None
+        self.profile_picture = url
         
     def __repr__(self):
         result = ""
