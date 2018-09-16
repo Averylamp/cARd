@@ -70,7 +70,7 @@ def get_search_string(image):
         request_string = "https://www.google.com/search?q={}".format(current_string.replace(" ", "%20"))
         current_output = requests.get(request_string).text
 
-    return request_string
+    return current_string
 
 def get_cropped_and_rectified_image(image):
     edges = cv2.Canny(image,100,200,apertureSize=3)
