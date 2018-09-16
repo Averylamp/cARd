@@ -12,8 +12,6 @@ class HistoryListViewController: UIViewController {
 
     @IBOutlet weak var cardTableView: UITableView!
     
-    var cardCount = 10
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,19 +33,9 @@ extension HistoryListViewController: UITableViewDelegate {
 extension HistoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Business Card", for: indexPath) as? BusinessCardCell {
-        
-            let person = Person(name: "Pikachu")
-            person.phoneNumber = "0000000000"
-            person.links["devpost"] = ""
-            person.links["facebook"] = ""
-            person.links["linkedin"] = ""
-            person.links["phoneCall"] = ""
-            person.links["phoneFacetime"] = ""
-            person.links["phoneText"] = ""
-            person.links["twitter"] = ""
-            person.links["website"] = ""
-            
+            let person = ServerManager.sharedInstance.profiles[indexPath.row]
             cell.person = person
+
             return cell
         }
         
@@ -55,7 +43,7 @@ extension HistoryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardCount
+        return ServerManager.sharedInstance.profiles.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

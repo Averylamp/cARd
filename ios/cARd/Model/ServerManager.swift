@@ -7,11 +7,33 @@
 
 import UIKit
 
-class ServerManager: NSObject {
+class ServerManager {
+    
+    
     static let sharedInstance = ServerManager()
     
+    var profiles:[Person]
     
-    func analyzeCardImage(image: UIImage)-> (UIImage, Person){
+    private init() {
+        print("Shared Instance initialized")
+        if let profiles = UserDefaults.standard.object(forKey: "allProfiles") as? [Person]{
+            self.profiles = profiles
+        }else{
+            self.profiles = []
+        }
+    }
+    
+    
+    func addPerson(person: Person){
+        self.profiles.append(person)
+        if let data = try? NSKeyedArchiver.archivedData(withRootObject: self.profiles, requiringSecureCoding: false){
+            UserDefaults.standard.set(data, forKey: "allProfiles")
+        }
+        
+    }
+    
+    
+    func analyzeCardImage(image: UIImage, completion: ((UIImage, Person) -> Void)) {
         
         let person = Person(name: "Avery Lamp")
         person.phoneNumber = "0000000000"
@@ -28,7 +50,7 @@ class ServerManager: NSObject {
         
         let returnedTarget = UIImage(named: "palantir")
         
-        return (returnedTarget!, person)
+        completion(returnedTarget!, person)
     }
     
 }
