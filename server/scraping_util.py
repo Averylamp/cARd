@@ -51,7 +51,7 @@ def get_person(name, phone_number, email):
     response['email'] = email
 
     memo[key] = response
-    print(response)
+#    print(response)
     return response
 
 def get_as_base64(url):
