@@ -70,8 +70,7 @@ class BusinessCardCell: UITableViewCell {
 
     func selectIconFor(type: String) -> UIImage {
         let image = UIImage(named: type)
-        
-        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage(named: "pikachu") ?? UIImage()
+        return image?.withRenderingMode(.alwaysTemplate) ?? UIImage(named: "website") ?? UIImage()
     }
     
     func configure() {

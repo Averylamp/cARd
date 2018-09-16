@@ -24,6 +24,11 @@ class HistoryListViewController: UIViewController {
             self.cardTableView.reloadData()
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cardTableView.reloadData()
+    }
 }
 
 extension HistoryListViewController: UITableViewDelegate {
